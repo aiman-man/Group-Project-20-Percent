@@ -126,7 +126,7 @@ button { color: inherit; }
 .loader-progress { height: 4px; overflow: hidden; border: 1px solid rgba(72, 230, 255, 0.28); background: rgba(72, 230, 255, 0.05); }
 .loader-progress span { display: block; width: 0; height: 100%; background: linear-gradient(90deg, var(--cyan-2), var(--cyan)); box-shadow: 0 0 14px var(--cyan); }
 .loader-copy strong { display: inline-block; margin-top: 10px; color: white; font-size: 12px; letter-spacing: 2px; }
-.welcome-title { position: absolute; top: 50%; left: 50%; opacity: 0; margin: 0; color: white; text-align: center; font: 800 clamp(22px, 5vw, 60px)/1.1 var(--font-tech); letter-spacing: clamp(3px, 1vw, 12px); text-shadow: 0 0 12px rgba(72, 230, 255, 0.8), 0 0 45px rgba(0, 168, 255, 0.45); transform: translate(-50%, -50%) scale(0.82); transition: 0.45s ease; width: 90%; }
+.welcome-title { position: absolute; top: 50%; left: 50%; opacity: 0; margin: 0; color: white; text-align: center; font: 800 clamp(16px, 3vw, 42px)/1.1 var(--font-tech); letter-spacing: clamp(3px, 1vw, 12px); text-shadow: 0 0 12px rgba(72, 230, 255, 0.8), 0 0 45px rgba(0, 168, 255, 0.45); transform: translate(-50%, -50%) scale(0.82); transition: 0.45s ease; width: 90%; }
 .preloader.show-welcome .welcome-title { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 .preloader.show-welcome .welcome-title { opacity: 1; transform: scale(1); }
 @keyframes rotate { to { transform: rotate(360deg); } }
