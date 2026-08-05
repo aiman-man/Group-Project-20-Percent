@@ -1,10 +1,608 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Group Project</title>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>DFD Jobsheet Hub</title>
+
+    <!-- Google Font -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>Hello, this is our group HTML project 20 % Aiman & Haziq</h1>
-    <p>This website can be edited by both group members using GitHub and VS Code.</p>
+
+    <!-- Custom cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Mouse glow -->
+    <div class="mouse-glow"></div>
+
+    <!-- Animated background -->
+    <div class="animated-background">
+
+        <div class="gradient-orb orb-one"></div>
+        <div class="gradient-orb orb-two"></div>
+        <div class="gradient-orb orb-three"></div>
+
+        <div class="grid-background"></div>
+
+        <div class="particles" id="particles"></div>
+
+    </div>
+
+    <!-- Navbar -->
+    <header class="navbar">
+
+        <div class="container nav-container">
+
+            <a href="#home" class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+
+                <span>
+                    <strong>DFD</strong> Jobsheet Hub
+                </span>
+            </a>
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-label="Open navigation"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav class="nav-menu" id="navMenu">
+
+                <a href="#home" class="nav-link active">
+                    Home
+                </a>
+
+                <a href="#about" class="nav-link">
+                    About Us
+                </a>
+
+                <a href="#jobsheet" class="nav-link">
+                    Jobsheet
+                </a>
+
+                <a href="#resources" class="nav-link">
+                    Resources
+                </a>
+
+                <a href="#contact" class="nav-link">
+                    Contact
+                </a>
+
+            </nav>
+
+            <a href="#jobsheet" class="nav-button">
+                Get Started
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <!-- Hero section -->
+        <section class="hero-section" id="home">
+
+            <div class="container hero-container">
+
+                <div class="hero-content reveal">
+
+                    <div class="small-label">
+                        <span></span>
+                        Learn · Practice · Master
+                    </div>
+
+                    <h1>
+                        Master DFD Through
+                        <span>Structured Jobsheets</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Sharpen your knowledge and practical skills in
+                        Data Flow Diagram through structured jobsheets,
+                        clear explanations and interactive learning
+                        activities designed for DFD students.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#jobsheet" class="primary-button">
+                            Explore Jobsheets
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                        <a href="#about" class="secondary-button">
+                            About Us
+                            <i class="fa-solid fa-users"></i>
+                        </a>
+
+                    </div>
+
+                    <div class="hero-features">
+
+                        <div>
+                            <i class="fa-solid fa-circle-check"></i>
+                            Beginner Friendly
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-circle-check"></i>
+                            Structured Learning
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-circle-check"></i>
+                            Practical and Effective
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Hero visual -->
+                <div class="hero-visual reveal">
+
+                    <div class="visual-glow"></div>
+
+                    <div class="floating-card jobsheet-card">
+
+                        <div class="mini-card-title">
+                            Jobsheet Progress
+                        </div>
+
+                        <div class="check-row">
+                            <i class="fa-solid fa-circle-check"></i>
+                            Jobsheet 01
+                        </div>
+
+                        <div class="check-row">
+                            <i class="fa-solid fa-circle-check"></i>
+                            Jobsheet 02
+                        </div>
+
+                        <div class="check-row">
+                            <i class="fa-solid fa-circle-check"></i>
+                            Jobsheet 03
+                        </div>
+
+                        <div class="check-row faded">
+                            <i class="fa-regular fa-circle"></i>
+                            Jobsheet 04
+                        </div>
+
+                    </div>
+
+                    <div class="diagram-card">
+
+                        <div class="diagram-header">
+
+                            <div>
+                                <span class="status-dot"></span>
+                                Data Flow Diagram
+                            </div>
+
+                            <i class="fa-solid fa-ellipsis"></i>
+
+                        </div>
+
+                        <div class="diagram-area">
+
+                            <div class="diagram-box data-store top-store">
+                                Data Store
+                            </div>
+
+                            <div class="diagram-box external left-external">
+                                External Entity
+                            </div>
+
+                            <div class="process-circle">
+                                <span>Process</span>
+                                <strong>1.0</strong>
+                            </div>
+
+                            <div class="diagram-box external right-external">
+                                External Entity
+                            </div>
+
+                            <div class="diagram-box data-store bottom-store">
+                                Data Store
+                            </div>
+
+                            <div class="line vertical-top"></div>
+                            <div class="line vertical-bottom"></div>
+                            <div class="line horizontal-left"></div>
+                            <div class="line horizontal-right"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="floating-card progress-card">
+
+                        <div class="mini-card-title">
+                            Your Progress
+                        </div>
+
+                        <div class="progress-circle">
+                            <span>85%</span>
+                        </div>
+
+                        <p>Excellent Progress!</p>
+
+                        <div class="mini-chart">
+
+                            <span style="height: 30%"></span>
+                            <span style="height: 45%"></span>
+                            <span style="height: 38%"></span>
+                            <span style="height: 65%"></span>
+                            <span style="height: 55%"></span>
+                            <span style="height: 80%"></span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="animated-pointer">
+                        <i class="fa-solid fa-arrow-pointer"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Statistics -->
+        <section class="stats-section">
+
+            <div class="container">
+
+                <div class="stats-container reveal">
+
+                    <div class="stat-item">
+
+                        <div class="stat-icon purple">
+                            <i class="fa-solid fa-file-lines"></i>
+                        </div>
+
+                        <div>
+                            <h3>50+</h3>
+                            <p>Quality Jobsheets</p>
+                        </div>
+
+                    </div>
+
+                    <div class="stat-item">
+
+                        <div class="stat-icon blue">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+
+                        <div>
+                            <h3>DFD</h3>
+                            <p>Specialised Programme</p>
+                        </div>
+
+                    </div>
+
+                    <div class="stat-item">
+
+                        <div class="stat-icon cyan">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+
+                        <div>
+                            <h3>100%</h3>
+                            <p>Structured Learning</p>
+                        </div>
+
+                    </div>
+
+                    <div class="stat-item">
+
+                        <div class="stat-icon pink">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+
+                        <div>
+                            <h3>Students</h3>
+                            <p>Designed for DFD</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- About programme -->
+        <section class="about-section" id="about">
+
+            <div class="container about-container">
+
+                <div class="about-content reveal">
+
+                    <p class="section-label">
+                        About the Programme
+                    </p>
+
+                    <h2>
+                        What is
+                        <span>DFD?</span>
+                    </h2>
+
+                    <p>
+                        DFD refers to the Diploma in Computer Technology
+                        (Big Data), a programme that develops students'
+                        skills in computer technology, data management,
+                        data analysis and system development.
+                    </p>
+
+                    <p>
+                        Students learn how to collect, organise, process,
+                        analyse, visualise and interpret data to support
+                        better decision-making in real-world applications.
+                    </p>
+
+                    <a href="#jobsheet" class="outline-button">
+                        Learn More About DFD
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+                <div class="feature-grid" id="jobsheet">
+
+                    <article class="feature-card purple-card reveal">
+
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-list-check"></i>
+                        </div>
+
+                        <h3>Structured Jobsheets</h3>
+
+                        <p>
+                            Well-organised practical activities that
+                            guide students from beginner concepts to
+                            advanced learning.
+                        </p>
+
+                        <a href="#">
+                            View Jobsheets
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </article>
+
+                    <article class="feature-card blue-card reveal">
+
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+
+                        <h3>Clear Explanations</h3>
+
+                        <p>
+                            Simple explanations, examples and visual
+                            guidance to make every topic easier to
+                            understand.
+                        </p>
+
+                        <a href="#">
+                            Start Learning
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </article>
+
+                    <article class="feature-card cyan-card reveal">
+
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-puzzle-piece"></i>
+                        </div>
+
+                        <h3>Practical Exercises</h3>
+
+                        <p>
+                            Hands-on exercises that allow students to
+                            apply what they have learned in practical
+                            situations.
+                        </p>
+
+                        <a href="#">
+                            Try Exercises
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </article>
+
+                    <article class="feature-card gold-card reveal">
+
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+
+                        <h3>Better Results</h3>
+
+                        <p>
+                            Track progress, strengthen understanding and
+                            achieve better academic and practical results.
+                        </p>
+
+                        <a href="#">
+                            View Progress
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Resources -->
+        <section class="resources-section" id="resources">
+
+            <div class="container">
+
+                <div class="section-heading reveal">
+
+                    <p class="section-label">Learning Resources</p>
+
+                    <h2>
+                        Everything You Need to
+                        <span>Learn Better</span>
+                    </h2>
+
+                    <p>
+                        Access notes, examples, templates and practical
+                        activities in one organised learning platform.
+                    </p>
+
+                </div>
+
+                <div class="resource-grid">
+
+                    <div class="resource-card reveal">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <h3>Lecture Notes</h3>
+                        <p>
+                            Download learning notes for every important
+                            topic in the programme.
+                        </p>
+                    </div>
+
+                    <div class="resource-card reveal">
+                        <i class="fa-solid fa-diagram-project"></i>
+                        <h3>Diagram Examples</h3>
+                        <p>
+                            Study practical examples of data flow,
+                            system architecture and database diagrams.
+                        </p>
+                    </div>
+
+                    <div class="resource-card reveal">
+                        <i class="fa-solid fa-code"></i>
+                        <h3>Code Examples</h3>
+                        <p>
+                            Review programming samples and use them as
+                            references for practical assignments.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Call to action -->
+        <section class="cta-section">
+
+            <div class="container">
+
+                <div class="cta-box reveal">
+
+                    <div>
+
+                        <p class="section-label">
+                            Ready to Begin?
+                        </p>
+
+                        <h2>
+                            Practice Today,
+                            <span>Master Tomorrow.</span>
+                        </h2>
+
+                        <p>
+                            Start exploring structured jobsheets and
+                            improve your DFD knowledge today.
+                        </p>
+
+                    </div>
+
+                    <a href="#jobsheet" class="primary-button">
+                        Start Learning
+                        <i class="fa-solid fa-rocket"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+
+        <div class="container footer-container">
+
+            <div>
+                <h3>DFD Jobsheet Hub</h3>
+                <p>
+                    A structured digital learning platform for DFD students.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#jobsheet">Jobsheets</a>
+                <a href="#resources">Resources</a>
+            </div>
+
+            <p class="copyright">
+                © 2026 DFD Jobsheet Hub. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+>>>>>>> 988d6d7 (Create DFD jobsheet website)
 </body>
 </html>
