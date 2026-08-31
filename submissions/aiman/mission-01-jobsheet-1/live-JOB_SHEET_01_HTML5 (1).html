@@ -1,0 +1,3025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JOB SHEET 01: HTML5</title>
+
+<style>
+:root{
+    --bg:#0b1020;
+    --panel:#121a2e;
+    --panel2:#18233d;
+    --line:#293653;
+    --text:#eef4ff;
+    --muted:#9eacc8;
+    --accent:#6ea8fe;
+    --accent2:#8b5cf6;
+    --success:#35d07f;
+    --danger:#ff6b7a;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html,body{
+    margin:0;
+    min-height:100%;
+    font-family:Inter,Segoe UI,Arial,sans-serif;
+    background:
+        radial-gradient(circle at top right,#1d2b52 0,#0b1020 45%);
+    color:var(--text);
+}
+
+button,input,select,textarea{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.topbar{
+    min-height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px 24px;
+    border-bottom:1px solid var(--line);
+    background:rgba(9,14,29,.96);
+    position:sticky;
+    top:0;
+    z-index:20;
+    backdrop-filter:blur(12px);
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:800;
+}
+
+.logo{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    background:linear-gradient(135deg,var(--accent2),var(--accent));
+    display:grid;
+    place-items:center;
+    font-size:19px;
+    box-shadow:0 8px 25px #0005;
+}
+
+.brand small{
+    display:block;
+    color:var(--muted);
+    font-weight:500;
+    margin-top:2px;
+}
+
+.student{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    color:var(--muted);
+    font-size:14px;
+}
+
+.student input,
+.setselect{
+    background:#0e1629;
+    border:1px solid var(--line);
+    border-radius:9px;
+    color:var(--text);
+    padding:9px 11px;
+    outline:none;
+}
+
+.setselect{
+    min-width:270px;
+    cursor:pointer;
+    color:#eef4ff;
+}
+
+.app{
+    display:grid;
+    grid-template-columns:330px minmax(430px,1fr) minmax(430px,1.05fr);
+    gap:14px;
+    padding:14px;
+    max-width:1900px;
+    margin:auto;
+}
+
+.panel{
+    background:rgba(18,26,46,.93);
+    border:1px solid var(--line);
+    border-radius:15px;
+    overflow:hidden;
+    min-width:0;
+}
+
+.panel-head{
+    padding:15px 17px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.panel-head h2{
+    font-size:15px;
+    margin:0;
+}
+
+.badge{
+    font-size:11px;
+    padding:5px 8px;
+    border-radius:999px;
+    background:#263552;
+    color:#c9d7f4;
+}
+
+.instructions{
+    padding:17px;
+    max-height:calc(100vh - 100px);
+    overflow:auto;
+}
+
+.instructions h1{
+    font-size:24px;
+    margin:0 0 8px;
+}
+
+.instructions h3{
+    font-size:13px;
+    color:#cbd8f2;
+    margin:20px 0 8px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+}
+
+.instructions p,
+.instructions li{
+    font-size:13px;
+    line-height:1.65;
+    color:#b9c5dc;
+}
+
+.instructions ul,
+.instructions ol{
+    padding-left:21px;
+}
+
+.req{
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+    padding:9px 10px;
+    background:#0d1528;
+    border:1px solid #202d49;
+    border-radius:9px;
+    margin:6px 0;
+    font-size:12px;
+    color:#b9c5dc;
+}
+
+.req b{
+    color:#fff;
+    font-weight:600;
+}
+
+.setbar{
+    padding:10px 14px;
+    border-bottom:1px solid var(--line);
+    background:#10182b;
+    display:flex;
+    gap:8px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.setbar label{
+    font-size:11px;
+    color:var(--muted);
+}
+
+.editor-wrap{
+    height:calc(100vh - 158px);
+    min-height:560px;
+    display:flex;
+    flex-direction:column;
+}
+
+.editor{
+    flex:1;
+    display:flex;
+    overflow:hidden;
+    background:#080d19;
+}
+
+.gutter{
+    width:47px;
+    overflow:hidden;
+    background:#0b1222;
+    color:#53627e;
+    text-align:right;
+    padding:14px 10px 14px 0;
+    font:13px/1.7 Consolas,monospace;
+    user-select:none;
+}
+
+textarea#code{
+    flex:1;
+    resize:none;
+    border:0;
+    outline:0;
+    background:#080d19;
+    color:#d9e7ff;
+    padding:14px 16px;
+    font:13px/1.7 Consolas,Monaco,monospace;
+    white-space:pre;
+    overflow:auto;
+    tab-size:2;
+}
+
+.toolbar{
+    padding:12px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    border-top:1px solid var(--line);
+    background:#10182b;
+}
+
+.btn{
+    border:1px solid #344563;
+    background:#1b2944;
+    color:#eaf2ff;
+    border-radius:9px;
+    padding:9px 13px;
+    font-weight:700;
+    font-size:12px;
+}
+
+.btn:hover{
+    filter:brightness(1.15);
+}
+
+.primary{
+    background:linear-gradient(135deg,#5b7cfa,#7958e8);
+    border:0;
+}
+
+.success{
+    background:#164b34;
+    border-color:#267b54;
+}
+
+.telegram{
+    background:#168acd;
+    border-color:#31a8ef;
+}
+
+.print{
+    background:#4c3f15;
+    border-color:#8b7528;
+}
+
+.danger{
+    background:#4b1e2a;
+    border-color:#743041;
+}
+
+.output-wrap{
+    height:calc(100vh - 158px);
+    min-height:560px;
+    display:flex;
+    flex-direction:column;
+}
+
+.preview{
+    flex:1;
+    background:white;
+    overflow:auto;
+}
+
+.preview iframe{
+    width:100%;
+    height:100%;
+    min-height:480px;
+    border:0;
+    display:block;
+}
+
+.status{
+    padding:11px 14px;
+    border-top:1px solid var(--line);
+    background:#10182b;
+    font-size:12px;
+    color:var(--muted);
+}
+
+.checks{
+    padding:10px 14px;
+    border-top:1px solid var(--line);
+    max-height:180px;
+    overflow:auto;
+}
+
+.checkrow{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:11px;
+    padding:4px 0;
+    color:#b8c5dd;
+}
+
+.checkrow .dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#65738d;
+}
+
+.checkrow.pass .dot{
+    background:var(--success);
+}
+
+.checkrow.fail .dot{
+    background:var(--danger);
+}
+
+.notice{
+    padding:9px 12px;
+    background:#17223a;
+    color:#aebbd2;
+    border-radius:9px;
+    font-size:11px;
+    line-height:1.5;
+    margin-top:12px;
+}
+
+.submission{
+    margin-top:15px;
+    padding:14px;
+    background:#0d1528;
+    border:1px solid #293653;
+    border-radius:12px;
+}
+
+.submission h3{
+    margin-top:0;
+}
+
+.submission p{
+    margin:7px 0;
+    font-size:12px;
+}
+
+.submission strong{
+    color:#fff;
+}
+
+.lecturer{
+    margin-top:12px;
+    padding-top:12px;
+    border-top:1px solid #293653;
+}
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:#020611d9;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:50;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-card{
+    width:min(1000px,96vw);
+    height:min(820px,92vh);
+    background:#111a2e;
+    border:1px solid var(--line);
+    border-radius:16px;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+}
+
+.modal-card iframe{
+    flex:1;
+    border:0;
+    background:#fff;
+}
+
+.modal-head{
+    padding:13px 16px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid var(--line);
+}
+
+.warning{
+    position:fixed;
+    inset:0;
+    background:#050912;
+    color:white;
+    display:none;
+    z-index:999;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:30px;
+}
+
+.warning.show{
+    display:flex;
+}
+
+.warning-box{
+    max-width:600px;
+    background:#111a2e;
+    border:1px solid #344563;
+    padding:30px;
+    border-radius:18px;
+}
+
+@media(max-width:1200px){
+    .app{
+        grid-template-columns:300px 1fr;
+    }
+
+    .output-panel{
+        grid-column:1/-1;
+    }
+
+    .output-wrap{
+        height:620px;
+    }
+}
+
+@media(max-width:800px){
+    .app{
+        grid-template-columns:1fr;
+    }
+
+    .editor-wrap,
+    .output-wrap{
+        height:650px;
+    }
+
+    .student input{
+        width:120px;
+    }
+
+    .topbar{
+        padding:10px 12px;
+        flex-wrap:wrap;
+        gap:10px;
+    }
+}
+
+/* Question protection */
+.protected{
+    user-select:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+}
+
+@media print{
+    body *{
+        visibility:hidden;
+    }
+
+    #printArea,
+    #printArea *{
+        visibility:visible;
+    }
+
+    #printArea{
+        position:absolute;
+        left:0;
+        top:0;
+        width:100%;
+        background:white;
+        color:#111;
+        padding:25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="brand">
+        <div class="logo">&lt;/&gt;</div>
+
+        <div>
+            JOB SHEET 01: HTML5
+            <small>
+                PRACTICAL MOBILE APPLICATION DEVELOPMENT
+            </small>
+        </div>
+    </div>
+
+    <div class="student">
+        Student Name
+        <input
+            id="studentName"
+            placeholder="Enter your name"
+            autocomplete="off"
+        >
+    </div>
+
+</header>
+
+
+<main class="app">
+
+<!-- ========================================================= -->
+<!-- QUESTION / INSTRUCTION PANEL -->
+<!-- ========================================================= -->
+
+<section class="panel protected" id="questionPanel">
+
+    <div class="panel-head">
+        <h2>Task Instructions</h2>
+        <span class="badge" id="taskBadge">SET 1</span>
+    </div>
+
+    <div class="setbar">
+
+        <label>QUESTION SET</label>
+
+        <select id="setSelect" class="setselect">
+        </select>
+
+    </div>
+
+
+    <div class="instructions">
+
+        <h1 id="title"></h1>
+
+        <p>
+            Create an HTML5 webpage entitled
+            <b id="titleInline"></b>.
+        </p>
+
+
+        <h3>Website Information</h3>
+
+        <ul>
+            <li>Main heading:
+                <b id="mainHeading"></b>
+            </li>
+
+            <li>Second heading:
+                <b id="secondHeading"></b>
+            </li>
+
+            <li>
+                Write a paragraph describing the selected topic.
+            </li>
+        </ul>
+
+
+        <h3>HTML5 Meter and Progress</h3>
+
+        <ul>
+            <li>
+                Meter value:
+                <b id="meter"></b>%
+            </li>
+
+            <li>
+                Progress value:
+                <b id="progress"></b>
+            </li>
+        </ul>
+
+
+        <h3 id="ulHeading"></h3>
+
+        <p>
+            Create an unordered list containing:
+        </p>
+
+        <ul id="ulList"></ul>
+
+
+        <h3 id="olHeading"></h3>
+
+        <p>
+            Create an ordered list containing:
+        </p>
+
+        <ol id="olList"></ol>
+
+
+        <h3>Images</h3>
+
+        <p>
+            <b>Image 1:</b>
+            Caption:
+            <span id="img1cap"></span>
+            <br>
+            Alt text:
+            <span id="img1alt"></span>
+        </p>
+
+        <p>
+            <b>Image 2:</b>
+            Caption:
+            <span id="img2cap"></span>
+            <br>
+            Alt text:
+            <span id="img2alt"></span>
+        </p>
+
+        <p>
+            Image size:
+            <b>300px × 200px</b>
+        </p>
+
+
+        <h3>Hyperlinks</h3>
+
+        <ul id="linkList"></ul>
+
+        <p>
+            Email:
+            <span id="emailText"></span>
+        </p>
+
+
+        <p>
+            Apply suitable HTML5 text formatting
+            to selected content.
+        </p>
+
+
+        <div class="notice">
+
+            <b>Assessment note:</b>
+
+            Select a question set, type your own solution
+            in the editor, then use
+            <b>VIEW OUTPUT</b>
+            or
+            <b>CHECK CODE</b>.
+
+            Drafts are saved separately for each set
+            in this browser.
+
+        </div>
+
+
+        <h3>Requirement Checklist</h3>
+
+        <div id="requirements"></div>
+
+
+        <!-- ================================================= -->
+        <!-- SUBMISSION INFORMATION -->
+        <!-- ================================================= -->
+
+        <div class="submission">
+
+            <h3>Submission Information</h3>
+
+            <p>
+                Student:
+                <strong id="submissionStudent">
+                    Not entered
+                </strong>
+            </p>
+
+            <p>
+                Question Set:
+                <strong id="submissionSet">
+                    Set 1
+                </strong>
+            </p>
+
+            <p>
+                Task:
+                <strong id="submissionTask">
+                    My Favourite Café
+                </strong>
+            </p>
+
+            <p>
+                Validation:
+                <strong id="submissionValidation">
+                    Not checked
+                </strong>
+            </p>
+
+            <p>
+                Lecturer Telegram:
+                <strong>+60189577991</strong>
+            </p>
+
+
+            <div class="lecturer">
+
+                <h3>LECTURER DETAILS</h3>
+
+                <p>
+                    <strong>
+                        MOHD SHUKRI BIN MUHAMAD HUSIN
+                    </strong>
+                </p>
+
+                <p>
+                    Diploma in Computer Technology (Big Data)
+                    TVETMARA Lumut
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- CODE EDITOR -->
+<!-- ========================================================= -->
+
+<section class="panel">
+
+    <div class="panel-head">
+
+        <h2>HTML Code Editor</h2>
+
+        <span class="badge">
+            Student Workspace
+        </span>
+
+    </div>
+
+
+    <div class="editor-wrap">
+
+        <div class="editor">
+
+            <div
+                class="gutter"
+                id="gutter"
+            >1</div>
+
+            <textarea
+                id="code"
+                spellcheck="false"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+                aria-label="HTML code editor"
+                placeholder="Type your HTML5 code here..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="toolbar">
+
+            <button
+                class="btn primary"
+                id="viewBtn"
+            >
+                ▶ VIEW OUTPUT
+            </button>
+
+
+            <button
+                class="btn success"
+                id="checkBtn"
+            >
+                ✓ CHECK CODE
+            </button>
+
+
+            <button
+                class="btn"
+                id="templateBtn"
+            >
+                ＋ INSERT STARTER
+            </button>
+
+
+            <button
+                class="btn"
+                id="fullscreenBtn"
+            >
+                ⛶ FULL SCREEN
+            </button>
+
+
+            <button
+                class="btn print"
+                id="printBtn"
+            >
+                🖨 PRINT OUTPUT
+            </button>
+
+
+            <button
+                class="btn telegram"
+                id="telegramBtn"
+            >
+                📤 SUBMIT VIA TELEGRAM
+            </button>
+
+
+            <button
+                class="btn danger"
+                id="clearBtn"
+            >
+                CLEAR
+            </button>
+
+        </div>
+
+
+        <div
+            class="status"
+            id="editorStatus"
+        >
+            Ready.
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- OUTPUT -->
+<!-- ========================================================= -->
+
+<section class="panel output-panel">
+
+    <div class="panel-head">
+
+        <h2>Rendered Output</h2>
+
+        <span class="badge">
+            Live Preview
+        </span>
+
+    </div>
+
+
+    <div class="output-wrap">
+
+        <div class="preview">
+
+            <iframe
+                id="preview"
+                sandbox="allow-scripts allow-forms"
+            ></iframe>
+
+        </div>
+
+
+        <div
+            class="checks"
+            id="checks"
+        >
+
+            <div class="checkrow">
+
+                <span class="dot"></span>
+
+                Click
+                <b>CHECK CODE</b>
+                to validate your requirements.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<!-- ========================================================= -->
+<!-- FULLSCREEN MODAL -->
+<!-- ========================================================= -->
+
+<div
+    class="modal"
+    id="modal"
+>
+
+    <div class="modal-card">
+
+        <div class="modal-head">
+
+            <b>Full Screen Output</b>
+
+            <button
+                class="btn"
+                id="closeModal"
+            >
+                CLOSE
+            </button>
+
+        </div>
+
+        <iframe
+            id="fullPreview"
+            sandbox="allow-scripts allow-forms"
+        ></iframe>
+
+    </div>
+
+</div>
+
+
+
+<!-- ========================================================= -->
+<!-- SCREENSHOT / VISIBILITY WARNING -->
+<!-- ========================================================= -->
+
+<div
+    class="warning"
+    id="warning"
+>
+
+    <div class="warning-box">
+
+        <h2>Assessment Protection</h2>
+
+        <p>
+            Please return to the assessment page.
+        </p>
+
+        <p>
+            The question set is protected against
+            normal copying, text selection and
+            right-click actions.
+        </p>
+
+        <button
+            class="btn primary"
+            onclick="closeWarning()"
+        >
+            RETURN TO LAB
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- ========================================================= -->
+<!-- PRINT AREA -->
+<!-- ========================================================= -->
+
+<div id="printArea"></div>
+
+
+
+<script>
+
+/* ============================================================
+   20 QUESTION SETS
+============================================================ */
+
+const DATA = [
+
+{
+title:"My Favourite Café",
+second:"About Our Café",
+meter:"70",
+progress:"68",
+ul:["Cappuccino","Chocolate Cake","Chicken Sandwich","Strawberry Smoothie"],
+ol:["Choose your menu.","Place your order.","Enjoy your meal."],
+images:[
+"Café Interior",
+"Modern Café Interior",
+"Chocolate Cake",
+"Fresh Chocolate Cake"
+],
+links:[
+"https://www.example.com/cafe",
+"https://www.example.com/cafe/menu",
+"https://www.example.com/cafe/gallery"
+],
+email:"mailto:cafesupport@example.com",
+slug:"Cafe",
+ulHeading:"Menu",
+olHeading:"Visit Us",
+linkNames:["Home","Menu","Gallery"]
+},
+
+{
+title:"My Dream Holiday",
+second:"My Holiday Destination",
+meter:"82",
+progress:"74",
+ul:["Sightseeing","Swimming","Photography","Shopping"],
+ol:["Select the destination.","Book the accommodation.","Prepare the luggage."],
+images:[
+"Beautiful Beach",
+"Tropical Holiday Beach",
+"Tourist Attraction",
+"Famous Tourist Attraction"
+],
+links:[
+"https://www.example.com/travel",
+"https://www.example.com/travel/activities",
+"https://www.example.com/travel/gallery"
+],
+email:"mailto:travel@example.com",
+slug:"Travel",
+ulHeading:"Holiday Activities",
+olHeading:"Travel Plan",
+linkNames:["Home","Activities","Gallery"]
+},
+
+{
+title:"My Favourite Restaurant",
+second:"Restaurant Information",
+meter:"65",
+progress:"81",
+ul:["Fried Rice","Grilled Chicken","Noodle Soup","Fresh Juice"],
+ol:["Select your food.","Place your order.","Make payment."],
+images:[
+"Restaurant Interior",
+"Comfortable Restaurant Interior",
+"Signature Dish",
+"Restaurant Signature Dish"
+],
+links:[
+"https://www.example.com/restaurant",
+"https://www.example.com/restaurant/menu",
+"https://www.example.com/restaurant/reviews"
+],
+email:"mailto:restaurant@example.com",
+slug:"Restaurant",
+ulHeading:"Popular Dishes",
+olHeading:"Ordering Process",
+linkNames:["Home","Food Menu","Reviews"]
+},
+
+{
+title:"My Favourite Sport",
+second:"About the Sport",
+meter:"90",
+progress:"76",
+ul:["Sports Shoes","Jersey","Ball","Water Bottle"],
+ol:["Wear sports equipment.","Warm up.","Start the game."],
+images:[
+"Sports Activity",
+"Outdoor Sports Activity",
+"Sports Equipment",
+"Sports Equipment Collection"
+],
+links:[
+"https://www.example.com/sport",
+"https://www.example.com/sport/rules",
+"https://www.example.com/sport/gallery"
+],
+email:"mailto:sports@example.com",
+slug:"Sport",
+ulHeading:"Sports Equipment",
+olHeading:"Before Playing",
+linkNames:["Home","Rules","Gallery"]
+},
+
+{
+title:"My Favourite Hobby",
+second:"About My Hobby",
+meter:"75",
+progress:"85",
+ul:["Reading","Drawing","Photography","Gardening"],
+ol:["Select an activity.","Prepare the equipment.","Start practising."],
+images:[
+"Reading Activity",
+"Person Reading a Book",
+"Creative Hobby",
+"Creative Hobby Activity"
+],
+links:[
+"https://www.example.com/hobby",
+"https://www.example.com/hobby/activities",
+"https://www.example.com/hobby/gallery"
+],
+email:"mailto:hobby@example.com",
+slug:"Hobby",
+ulHeading:"Hobby Activities",
+olHeading:"Getting Started",
+linkNames:["Home","Activities","Gallery"]
+},
+
+{
+title:"My Favourite Book",
+second:"About the Book",
+meter:"68",
+progress:"72",
+ul:["Author","Publisher","Genre","Publication Year"],
+ol:["Select a comfortable place.","Open the book.","Start reading."],
+images:[
+"Book Collection",
+"Collection of Books",
+"Reading Corner",
+"Comfortable Reading Corner"
+],
+links:[
+"https://www.example.com/books",
+"https://www.example.com/books/list",
+"https://www.example.com/books/reviews"
+],
+email:"mailto:books@example.com",
+slug:"Books",
+ulHeading:"Book Information",
+olHeading:"Reading Steps",
+linkNames:["Home","Books","Reviews"]
+},
+
+{
+title:"My Favourite Movie",
+second:"About the Movie",
+meter:"85",
+progress:"79",
+ul:["Action","Comedy","Drama","Adventure"],
+ol:["Select a movie.","Prepare snacks.","Start watching."],
+images:[
+"Cinema Hall",
+"Modern Cinema Hall",
+"Movie Screen",
+"Large Movie Screen"
+],
+links:[
+"https://www.example.com/movies",
+"https://www.example.com/movies/list",
+"https://www.example.com/movies/reviews"
+],
+email:"mailto:movies@example.com",
+slug:"Movies",
+ulHeading:"Movie Genres",
+olHeading:"Movie Night",
+linkNames:["Home","Movies","Reviews"]
+},
+
+{
+title:"My Favourite Music",
+second:"About My Music",
+meter:"78",
+progress:"88",
+ul:["Pop","Rock","Jazz","Classical"],
+ol:["Choose a song.","Connect the headphones.","Start listening."],
+images:[
+"Music Studio",
+"Modern Music Studio",
+"Musical Instrument",
+"Musical Instrument"
+],
+links:[
+"https://www.example.com/music",
+"https://www.example.com/music/list",
+"https://www.example.com/music/artists"
+],
+email:"mailto:music@example.com",
+slug:"Music",
+ulHeading:"Music Genres",
+olHeading:"Listening Routine",
+linkNames:["Home","Music","Artists"]
+},
+
+{
+title:"My Favourite Game",
+second:"About the Game",
+meter:"92",
+progress:"83",
+ul:["Characters","Missions","Levels","Rewards"],
+ol:["Open the game.","Select a character.","Start playing."],
+images:[
+"Gaming Setup",
+"Computer Gaming Setup",
+"Game Character",
+"Digital Game Character"
+],
+links:[
+"https://www.example.com/games",
+"https://www.example.com/games/list",
+"https://www.example.com/games/gallery"
+],
+email:"mailto:gaming@example.com",
+slug:"Games",
+ulHeading:"Game Features",
+olHeading:"Starting the Game",
+linkNames:["Home","Games","Gallery"]
+},
+
+{
+title:"My Dream Car",
+second:"About My Dream Car",
+meter:"73",
+progress:"67",
+ul:["Engine","Safety System","Interior","Entertainment System"],
+ol:["Choose the car model.","Check the specifications.","Take a test drive."],
+images:[
+"Sports Car",
+"Modern Sports Car",
+"Car Interior",
+"Luxury Car Interior"
+],
+links:[
+"https://www.example.com/cars",
+"https://www.example.com/cars/models",
+"https://www.example.com/cars/gallery"
+],
+email:"mailto:dreamcar@example.com",
+slug:"Cars",
+ulHeading:"Car Features",
+olHeading:"Car Preparation",
+linkNames:["Home","Models","Gallery"]
+},
+
+{
+title:"My Favourite Technology",
+second:"About the Technology",
+meter:"88",
+progress:"91",
+ul:["Internet","Artificial Intelligence","Cloud Computing","Mobile Applications"],
+ol:["Select the device.","Connect to the Internet.","Use the application."],
+images:[
+"Modern Computer",
+"Modern Computer Technology",
+"Digital Device",
+"Modern Digital Device"
+],
+links:[
+"https://www.example.com/technology",
+"https://www.example.com/technology/topics",
+"https://www.example.com/technology/gallery"
+],
+email:"mailto:technology@example.com",
+slug:"Technology",
+ulHeading:"Technology Features",
+olHeading:"Using Technology",
+linkNames:["Home","Technology","Gallery"]
+},
+
+{
+title:"My Favourite Pet",
+second:"About My Pet",
+meter:"80",
+progress:"69",
+ul:["Food","Water","Exercise","Grooming"],
+ol:["Prepare food.","Give fresh water.","Exercise the pet."],
+images:[
+"Friendly Pet",
+"Friendly Domestic Pet",
+"Pet Care",
+"Pet Care Activity"
+],
+links:[
+"https://www.example.com/pets",
+"https://www.example.com/pets/care",
+"https://www.example.com/pets/gallery"
+],
+email:"mailto:petcare@example.com",
+slug:"Pets",
+ulHeading:"Pet Care",
+olHeading:"Daily Routine",
+linkNames:["Home","Pet Care","Gallery"]
+},
+
+{
+title:"My Favourite Food",
+second:"About My Favourite Food",
+meter:"67",
+progress:"86",
+ul:["Rice","Chicken","Vegetables","Spices"],
+ol:["Prepare the ingredients.","Cook the food.","Serve the meal."],
+images:[
+"Fresh Ingredients",
+"Fresh Food Ingredients",
+"Prepared Meal",
+"Delicious Prepared Meal"
+],
+links:[
+"https://www.example.com/food",
+"https://www.example.com/food/recipes",
+"https://www.example.com/food/gallery"
+],
+email:"mailto:food@example.com",
+slug:"Food",
+ulHeading:"Ingredients",
+olHeading:"Preparation",
+linkNames:["Home","Recipes","Gallery"]
+},
+
+{
+title:"My Favourite Tourist Spot",
+second:"About the Destination",
+meter:"94",
+progress:"78",
+ul:["Museum","Beach","Shopping Centre","Historical Building"],
+ol:["Select the destination.","Plan the journey.","Visit the attraction."],
+images:[
+"Tourist Destination",
+"Popular Tourist Destination",
+"Historical Site",
+"Historical Tourist Site"
+],
+links:[
+"https://www.example.com/tourism",
+"https://www.example.com/tourism/attractions",
+"https://www.example.com/tourism/gallery"
+],
+email:"mailto:tourism@example.com",
+slug:"Tourism",
+ulHeading:"Attractions",
+olHeading:"Visiting Plan",
+linkNames:["Home","Attractions","Gallery"]
+},
+
+{
+title:"My Favourite School Activity",
+second:"About the Activity",
+meter:"76",
+progress:"93",
+ul:["Sports","Competition","Workshop","Club Activity"],
+ol:["Register for the activity.","Prepare the equipment.","Participate in the activity."],
+images:[
+"Student Activity",
+"Students Participating in Activity",
+"School Event",
+"School Event Activity"
+],
+links:[
+"https://www.example.com/school",
+"https://www.example.com/school/activities",
+"https://www.example.com/school/gallery"
+],
+email:"mailto:studentactivity@example.com",
+slug:"School",
+ulHeading:"Activity Types",
+olHeading:"Activity Preparation",
+linkNames:["Home","Activities","Gallery"]
+},
+
+{
+title:"My Favourite App",
+second:"About the Application",
+meter:"89",
+progress:"71",
+ul:["Messaging","Notifications","File Sharing","Video Calls"],
+ol:["Download the application.","Create an account.","Start using the application."],
+images:[
+"Mobile Application",
+"Mobile Application Interface",
+"Smartphone",
+"Modern Smartphone"
+],
+links:[
+"https://www.example.com/apps",
+"https://www.example.com/apps/features",
+"https://www.example.com/apps/support"
+],
+email:"mailto:apphelp@example.com",
+slug:"Apps",
+ulHeading:"Application Features",
+olHeading:"Using the App",
+linkNames:["Home","Features","Support"]
+},
+
+{
+title:"My Favourite Festival",
+second:"About the Festival",
+meter:"72",
+progress:"84",
+ul:["Food","Decorations","Traditional Clothes","Family Gathering"],
+ol:["Prepare the decorations.","Prepare the food.","Celebrate with family."],
+images:[
+"Festival Celebration",
+"Festival Celebration Event",
+"Festival Food",
+"Traditional Festival Food"
+],
+links:[
+"https://www.example.com/festival",
+"https://www.example.com/festival/activities",
+"https://www.example.com/festival/gallery"
+],
+email:"mailto:festival@example.com",
+slug:"Festival",
+ulHeading:"Festival Activities",
+olHeading:"Celebration Preparation",
+linkNames:["Home","Activities","Gallery"]
+},
+
+{
+title:"My Dream House",
+second:"About My Dream House",
+meter:"83",
+progress:"77",
+ul:["Living Room","Bedroom","Kitchen","Garden"],
+ol:["Select the location.","Design the house.","Build the house."],
+images:[
+"House Exterior",
+"Modern House Exterior",
+"Living Room",
+"Modern Living Room"
+],
+links:[
+"https://www.example.com/house",
+"https://www.example.com/house/design",
+"https://www.example.com/house/gallery"
+],
+email:"mailto:dreamhouse@example.com",
+slug:"House",
+ulHeading:"House Features",
+olHeading:"House Planning",
+linkNames:["Home","Design","Gallery"]
+},
+
+{
+title:"My Favourite YouTuber",
+second:"About the Creator",
+meter:"91",
+progress:"89",
+ul:["Tutorials","Reviews","Vlogs","Entertainment"],
+ol:["Open YouTube.","Search for the creator.","Select a video."],
+images:[
+"Video Studio",
+"YouTube Video Studio",
+"Video Recording",
+"Video Recording Equipment"
+],
+links:[
+"https://www.example.com/youtube",
+"https://www.example.com/youtube/videos",
+"https://www.example.com/youtube/channel"
+],
+email:"mailto:creator@example.com",
+slug:"YouTube",
+ulHeading:"Content Types",
+olHeading:"Watching a Video",
+linkNames:["Home","Videos","Channel"]
+},
+
+{
+title:"My Future Career",
+second:"About My Career",
+meter:"79",
+progress:"95",
+ul:["Communication","Teamwork","Problem Solving","Technical Skills"],
+ol:["Complete my studies.","Develop relevant skills.","Apply for a job."],
+images:[
+"Professional Workplace",
+"Modern Professional Workplace",
+"Career Activity",
+"Professional Career Activity"
+],
+links:[
+"https://www.example.com/career",
+"https://www.example.com/career/jobs",
+"https://www.example.com/career/gallery"
+],
+email:"mailto:career@example.com",
+slug:"Career",
+ulHeading:"Career Skills",
+olHeading:"Career Preparation",
+linkNames:["Home","Jobs","Gallery"]
+}
+
+];
+
+
+/* ============================================================
+   ELEMENTS
+============================================================ */
+
+const code=document.getElementById("code");
+const preview=document.getElementById("preview");
+const fullPreview=document.getElementById("fullPreview");
+const gutter=document.getElementById("gutter");
+const status=document.getElementById("editorStatus");
+const checks=document.getElementById("checks");
+const requirements=document.getElementById("requirements");
+const modal=document.getElementById("modal");
+const setSelect=document.getElementById("setSelect");
+const studentName=document.getElementById("studentName");
+
+
+/* ============================================================
+   POPULATE QUESTION SET DROPDOWN
+============================================================ */
+
+DATA.forEach((s,i)=>{
+
+    const option=document.createElement("option");
+
+    option.value=i;
+
+    option.textContent=
+        `Set ${i+1} – ${s.title}`;
+
+    setSelect.appendChild(option);
+
+});
+
+
+/* ============================================================
+   CURRENT SET
+============================================================ */
+
+function current(){
+
+    return DATA[
+        Number(setSelect.value)
+    ];
+
+}
+
+
+/* ============================================================
+   STUDENT NAME
+============================================================ */
+
+studentName.value=
+    localStorage.getItem("htmlLabStudentName") || "";
+
+studentName.addEventListener("input",()=>{
+
+    localStorage.setItem(
+        "htmlLabStudentName",
+        studentName.value
+    );
+
+    updateSubmissionInfo();
+
+});
+
+
+/* ============================================================
+   SUBMISSION INFORMATION
+============================================================ */
+
+function updateSubmissionInfo(){
+
+    const s=current();
+
+    document.getElementById(
+        "submissionStudent"
+    ).textContent=
+        studentName.value.trim() ||
+        "Not entered";
+
+    document.getElementById(
+        "submissionSet"
+    ).textContent=
+        `Set ${Number(setSelect.value)+1}`;
+
+    document.getElementById(
+        "submissionTask"
+    ).textContent=
+        s.title;
+
+}
+
+
+/* ============================================================
+   RENDER INSTRUCTIONS
+============================================================ */
+
+function renderInstructions(){
+
+    const s=current();
+
+    const setNumber=
+        Number(setSelect.value)+1;
+
+    document.getElementById(
+        "taskBadge"
+    ).textContent=
+        `SET ${setNumber}`;
+
+
+    document.getElementById("title").textContent=s.title;
+
+    document.getElementById("titleInline").textContent=s.title;
+
+    document.getElementById("mainHeading").textContent=s.title;
+
+    document.getElementById("secondHeading").textContent=s.second;
+
+    document.getElementById("meter").textContent=s.meter;
+
+    document.getElementById("progress").textContent=s.progress;
+
+
+    document.getElementById(
+        "ulHeading"
+    ).textContent=s.ulHeading;
+
+    document.getElementById(
+        "olHeading"
+    ).textContent=s.olHeading;
+
+
+    document.getElementById(
+        "ulList"
+    ).innerHTML=
+        s.ul.map(
+            x=>`<li>${escapeHTML(x)}</li>`
+        ).join("");
+
+
+    document.getElementById(
+        "olList"
+    ).innerHTML=
+        s.ol.map(
+            x=>`<li>${escapeHTML(x)}</li>`
+        ).join("");
+
+
+    document.getElementById("img1cap").textContent=s.images[0];
+
+    document.getElementById("img1alt").textContent=s.images[1];
+
+    document.getElementById("img2cap").textContent=s.images[2];
+
+    document.getElementById("img2alt").textContent=s.images[3];
+
+
+    document.getElementById(
+        "linkList"
+    ).innerHTML=
+        s.links.map(
+            (u,i)=>
+            `<li>
+                <a href="${u}" target="_blank" rel="noopener">
+                    ${s.linkNames[i]}
+                </a>
+                –
+                <code>${u}</code>
+            </li>`
+        ).join("");
+
+
+    document.getElementById(
+        "emailText"
+    ).innerHTML=
+        `<a href="${s.email}">
+            ${s.email}
+        </a>`;
+
+
+    createRequirements();
+
+    updateSubmissionInfo();
+
+    loadDraft();
+
+}
+
+
+/* ============================================================
+   REQUIREMENTS
+============================================================ */
+
+function createRequirements(){
+
+    const s=current();
+
+    const items=[
+
+        "HTML5 document structure",
+
+        `Page title: ${s.title}`,
+
+        `Main heading: ${s.title}`,
+
+        `Second heading: ${s.second}`,
+
+        "Topic paragraph",
+
+        `Meter value: ${s.meter}%`,
+
+        `Progress value: ${s.progress}`,
+
+        "Unordered list",
+
+        "Ordered list",
+
+        `Image 1 alt: ${s.images[1]}`,
+
+        `Image 2 alt: ${s.images[3]}`,
+
+        "Images 300px × 200px",
+
+        "First hyperlink",
+
+        "Second hyperlink",
+
+        "Third hyperlink",
+
+        "Email hyperlink",
+
+        "HTML text formatting"
+
+    ];
+
+
+    requirements.innerHTML=
+        items.map(
+            x=>
+            `<div class="req">
+                <b>${escapeHTML(x)}</b>
+                <span>Required</span>
+            </div>`
+        ).join("");
+
+}
+
+
+/* ============================================================
+   STARTER TEMPLATE
+============================================================ */
+
+function starter(){
+
+    const s=current();
+
+    return `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>${s.title}</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    margin:30px;
+    background:#f5f7fb;
+    color:#222;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 4px 20px #0002;
+}
+
+img{
+    margin:10px;
+    object-fit:cover;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>${s.title}</h1>
+
+<h2>${s.second}</h2>
+
+<p>
+Write your description here.
+Use <strong>HTML5 text formatting</strong>
+where suitable.
+</p>
+
+<p>
+Interest level:
+<meter
+min="0"
+max="100"
+value="${s.meter}">
+${s.meter}%
+</meter>
+</p>
+
+<p>
+Preparation progress:
+<progress
+max="100"
+value="${s.progress}">
+${s.progress}
+</progress>
+</p>
+
+<h2>${s.ulHeading}</h2>
+
+<ul>
+${s.ul.map(x=>`<li>${x}</li>`).join("\n")}
+</ul>
+
+<h2>${s.olHeading}</h2>
+
+<ol>
+${s.ol.map(x=>`<li>${x}</li>`).join("\n")}
+</ol>
+
+<h2>Images</h2>
+
+<figure>
+
+<img
+src="https://picsum.photos/seed/${s.slug}1/300/200"
+width="300"
+height="200"
+alt="${s.images[1]}">
+
+<figcaption>
+${s.images[0]}
+</figcaption>
+
+</figure>
+
+
+<figure>
+
+<img
+src="https://picsum.photos/seed/${s.slug}2/300/200"
+width="300"
+height="200"
+alt="${s.images[3]}">
+
+<figcaption>
+${s.images[2]}
+</figcaption>
+
+</figure>
+
+
+<h2>Hyperlinks</h2>
+
+<ul>
+
+${s.links.map(
+(u,i)=>
+`<li>
+<a href="${u}" target="_blank">
+${s.linkNames[i]}
+</a>
+</li>`
+).join("\n")}
+
+<li>
+<a href="${s.email}">
+Contact Us
+</a>
+</li>
+
+</ul>
+
+</div>
+
+</body>
+
+</html>`;
+
+}
+
+
+/* ============================================================
+   LOAD DRAFT
+============================================================ */
+
+function loadDraft(){
+
+    const key=
+        "htmlLabDraft_"+setSelect.value;
+
+    const saved=
+        localStorage.getItem(key);
+
+    code.value=
+        saved ?? "";
+
+    updateGutter();
+
+    status.textContent=
+        saved
+        ?
+        "Previous draft restored for this set."
+        :
+        "Ready. Enter your HTML solution.";
+
+    preview.srcdoc="";
+
+    checks.innerHTML=
+        `<div class="checkrow">
+            <span class="dot"></span>
+            Click <b>CHECK CODE</b>
+            to validate this set.
+        </div>`;
+
+    document.getElementById(
+        "submissionValidation"
+    ).textContent=
+        "Not checked";
+
+}
+
+
+/* ============================================================
+   GUTTER
+============================================================ */
+
+function updateGutter(){
+
+    const lines=
+        Math.max(
+            1,
+            code.value.split("\n").length
+        );
+
+    gutter.innerHTML=
+        Array.from(
+            {length:lines},
+            (_,i)=>i+1
+        ).join("<br>");
+
+}
+
+
+/* ============================================================
+   CODE INPUT
+============================================================ */
+
+code.addEventListener(
+    "input",
+    ()=>{
+
+        updateGutter();
+
+        localStorage.setItem(
+            "htmlLabDraft_"+setSelect.value,
+            code.value
+        );
+
+    }
+);
+
+
+code.addEventListener(
+    "scroll",
+    ()=>{
+        gutter.scrollTop=
+            code.scrollTop;
+    }
+);
+
+
+/* ============================================================
+   CLEAN HTML
+============================================================ */
+
+function clean(h){
+
+    return h
+        .replace(
+            /<script[\s\S]*?>[\s\S]*?<\/script>/gi,
+            ""
+        )
+        .replace(
+            /\son[a-z]+\s*=\s*(['"]).*?\1/gi,
+            ""
+        )
+        .replace(
+            /javascript\s*:/gi,
+            ""
+        );
+
+}
+
+
+/* ============================================================
+   VIEW OUTPUT
+============================================================ */
+
+function showOutput(){
+
+    const src=
+        code.value.trim();
+
+    if(!src){
+
+        preview.srcdoc=`
+
+<div style="
+font-family:Arial;
+padding:30px;
+color:#555;
+">
+
+<h2>No HTML code entered</h2>
+
+<p>
+Type your HTML code, then click
+<b>VIEW OUTPUT</b>.
+</p>
+
+</div>`;
+
+        status.textContent=
+            "Nothing to preview.";
+
+        return;
+    }
+
+
+    const s=current();
+
+    const student=
+        studentName.value.trim() ||
+        "Not entered";
+
+    const setNumber=
+        Number(setSelect.value)+1;
+
+
+    /*
+       Submission header is inserted into
+       the rendered output.
+    */
+
+    const header=`
+
+<div id="labSubmissionHeader"
+style="
+font-family:Arial,sans-serif;
+background:#f1f5ff;
+border:2px solid #405de6;
+padding:16px;
+margin:0 0 25px 0;
+border-radius:10px;
+">
+
+<h3 style="
+margin:0 0 10px 0;
+color:#243b80;
+">
+PRACTICAL MOBILE APPLICATION DEVELOPMENT
+</h3>
+
+<p style="margin:5px 0;">
+<strong>Student Name:</strong>
+${escapeHTML(student)}
+</p>
+
+<p style="margin:5px 0;">
+<strong>Question Set:</strong>
+Set ${setNumber}
+</p>
+
+<p style="margin:5px 0;">
+<strong>Task:</strong>
+${escapeHTML(s.title)}
+</p>
+
+<p style="margin:5px 0;">
+<strong>Validation:</strong>
+${document.getElementById("submissionValidation").textContent}
+</p>
+
+</div>
+
+`;
+
+
+    const cleaned=
+        clean(src);
+
+    const finalHTML=
+        `
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<style>
+
+body{
+    padding:20px;
+}
+
+#labSubmissionHeader{
+    display:block;
+}
+
+</style>
+
+</head>
+
+<body>
+
+${header}
+
+${cleaned}
+
+</body>
+
+</html>
+`;
+
+
+    preview.srcdoc=
+        finalHTML;
+
+    fullPreview.srcdoc=
+        finalHTML;
+
+    status.textContent=
+        "Output updated successfully.";
+
+}
+
+
+/* ============================================================
+   CHECK CODE
+============================================================ */
+
+function checkCode(){
+
+    const s=current();
+
+    const src=code.value;
+
+
+    const tests=[
+
+        [
+            "HTML5 document structure",
+            /<!doctype\s+html/i.test(src)
+        ],
+
+        [
+            "Page title",
+            /<title\b[^>]*>[\s\S]*?<\/title>/i.test(src)
+        ],
+
+        [
+            "Main heading",
+            new RegExp(
+                `<h1\\b[^>]*>[\\s\\S]*?${escapeReg(s.title)}[\\s\\S]*?<\\/h1>`,
+                "i"
+            ).test(src)
+        ],
+
+        [
+            "Second heading",
+            new RegExp(
+                `<h2\\b[^>]*>[\\s\\S]*?${escapeReg(s.second)}[\\s\\S]*?<\\/h2>`,
+                "i"
+            ).test(src)
+        ],
+
+        [
+            "Topic paragraph",
+            /<p\b[^>]*>[\s\S]*?<\/p>/i.test(src)
+        ],
+
+        [
+            `Meter value: ${s.meter}%`,
+            new RegExp(
+                `<meter\\b[^>]*value\\s*=\\s*["']?${s.meter}["']?`,
+                "i"
+            ).test(src)
+        ],
+
+        [
+            `Progress value: ${s.progress}`,
+            new RegExp(
+                `<progress\\b[^>]*value\\s*=\\s*["']?${s.progress}["']?`,
+                "i"
+            ).test(src)
+        ],
+
+        [
+            "Unordered list",
+            /<ul\b[\s\S]*?<li\b[\s\S]*?<\/ul>/i.test(src)
+        ],
+
+        [
+            "Ordered list",
+            /<ol\b[\s\S]*?<li\b[\s\S]*?<\/ol>/i.test(src)
+        ],
+
+        [
+            "Image 1 alt text",
+            new RegExp(
+                `alt\\s*=\\s*["']${escapeReg(s.images[1])}["']`,
+                "i"
+            ).test(src)
+        ],
+
+        [
+            "Image 2 alt text",
+            new RegExp(
+                `alt\\s*=\\s*["']${escapeReg(s.images[3])}["']`,
+                "i"
+            ).test(src)
+        ],
+
+        [
+            "Images 300px × 200px",
+            (
+                /width\s*=\s*["']300["'][\s\S]*?height\s*=\s*["']200["']/i.test(src)
+                ||
+                /height\s*=\s*["']200["'][\s\S]*?width\s*=\s*["']300["']/i.test(src)
+            )
+        ],
+
+        [
+            "First hyperlink",
+            src.includes(`href="${s.links[0]}"`)
+            ||
+            src.includes(`href='${s.links[0]}'`)
+        ],
+
+        [
+            "Second hyperlink",
+            src.includes(`href="${s.links[1]}"`)
+            ||
+            src.includes(`href='${s.links[1]}'`)
+        ],
+
+        [
+            "Third hyperlink",
+            src.includes(`href="${s.links[2]}"`)
+            ||
+            src.includes(`href='${s.links[2]}'`)
+        ],
+
+        [
+            "Email link",
+            src.includes(`href="${s.email}"`)
+            ||
+            src.includes(`href='${s.email}'`)
+        ],
+
+        [
+            "HTML text formatting",
+            /<(strong|b|em|i|mark|u|small|sub|sup)\b/i.test(src)
+        ]
+
+    ];
+
+
+    const pass=
+        tests.filter(
+            x=>x[1]
+        ).length;
+
+
+    checks.innerHTML=
+        tests.map(
+            x=>
+            `<div class="checkrow ${x[1]?"pass":"fail"}">
+
+                <span class="dot"></span>
+
+                ${x[1]?"✓":"✗"}
+
+                ${escapeHTML(x[0])}
+
+            </div>`
+        ).join("");
+
+
+    const percentage=
+        Math.round(
+            pass/tests.length*100
+        );
+
+
+    status.textContent=
+        `Validation complete: ${pass}/${tests.length} requirements detected (${percentage}%).`;
+
+
+    document.getElementById(
+        "submissionValidation"
+    ).textContent=
+        `${pass}/${tests.length} (${percentage}%)`;
+
+
+    showOutput();
+
+}
+
+
+/* ============================================================
+   ESCAPE REGEX
+============================================================ */
+
+function escapeReg(s){
+
+    return String(s).replace(
+        /[.*+?^${}()|[\]\\]/g,
+        "\\$&"
+    );
+
+}
+
+
+/* ============================================================
+   ESCAPE HTML
+============================================================ */
+
+function escapeHTML(s){
+
+    return String(s)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* ============================================================
+   QUESTION SET CHANGE
+============================================================ */
+
+setSelect.addEventListener(
+    "change",
+    ()=>{
+
+        renderInstructions();
+
+    }
+);
+
+
+/* ============================================================
+   VIEW BUTTON
+============================================================ */
+
+document.getElementById(
+    "viewBtn"
+).onclick=
+    showOutput;
+
+
+/* ============================================================
+   CHECK BUTTON
+============================================================ */
+
+document.getElementById(
+    "checkBtn"
+).onclick=
+    checkCode;
+
+
+/* ============================================================
+   STARTER BUTTON
+============================================================ */
+
+document.getElementById(
+    "templateBtn"
+).onclick=
+    ()=>{
+
+        if(
+            code.value.trim()
+            &&
+            !confirm(
+                "Replace current code with the starter template?"
+            )
+        ){
+            return;
+        }
+
+        code.value=
+            starter();
+
+        updateGutter();
+
+        localStorage.setItem(
+            "htmlLabDraft_"+setSelect.value,
+            code.value
+        );
+
+        status.textContent=
+            "Starter template inserted.";
+
+    };
+
+
+/* ============================================================
+   FULL SCREEN
+============================================================ */
+
+document.getElementById(
+    "fullscreenBtn"
+).onclick=
+    ()=>{
+
+        showOutput();
+
+        modal.classList.add("show");
+
+    };
+
+
+document.getElementById(
+    "closeModal"
+).onclick=
+    ()=>{
+
+        modal.classList.remove("show");
+
+    };
+
+
+modal.addEventListener(
+    "click",
+    e=>{
+
+        if(e.target===modal){
+
+            modal.classList.remove("show");
+
+        }
+
+    }
+);
+
+
+/* ============================================================
+   CLEAR
+============================================================ */
+
+document.getElementById(
+    "clearBtn"
+).onclick=
+    ()=>{
+
+        if(
+            confirm(
+                "Clear your current HTML code for this set?"
+            )
+        ){
+
+            code.value="";
+
+            updateGutter();
+
+            localStorage.removeItem(
+                "htmlLabDraft_"+setSelect.value
+            );
+
+            preview.srcdoc="";
+
+            checks.innerHTML=
+                `<div class="checkrow">
+
+                    <span class="dot"></span>
+
+                    Code cleared.
+
+                </div>`;
+
+            status.textContent=
+                "Editor cleared.";
+
+            document.getElementById(
+                "submissionValidation"
+            ).textContent=
+                "Not checked";
+
+        }
+
+    };
+
+
+/* ============================================================
+   PRINT RENDERED OUTPUT
+============================================================ */
+
+document.getElementById(
+    "printBtn"
+).onclick=
+    ()=>{
+
+        if(!code.value.trim()){
+
+            alert(
+                "Please enter your HTML code first."
+            );
+
+            return;
+
+        }
+
+
+        showOutput();
+
+
+        const s=current();
+
+        const student=
+            studentName.value.trim() ||
+            "Not entered";
+
+        const validation=
+            document.getElementById(
+                "submissionValidation"
+            ).textContent;
+
+
+        const outputHTML=
+        `
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+HTML5 Lab Submission
+</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    margin:30px;
+    color:#111;
+}
+
+.info{
+    border:2px solid #333;
+    padding:15px;
+    margin-bottom:25px;
+}
+
+.info h2{
+    margin-top:0;
+}
+
+.info p{
+    margin:6px 0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="info">
+
+<h2>
+PRACTICAL MOBILE APPLICATION DEVELOPMENT
+</h2>
+
+<p>
+<strong>Student Name:</strong>
+${escapeHTML(student)}
+</p>
+
+<p>
+<strong>Question Set:</strong>
+Set ${Number(setSelect.value)+1}
+</p>
+
+<p>
+<strong>Task:</strong>
+${escapeHTML(s.title)}
+</p>
+
+<p>
+<strong>Validation:</strong>
+${escapeHTML(validation)}
+</p>
+
+</div>
+
+${clean(code.value)}
+
+</body>
+
+</html>
+`;
+
+
+        const printWindow=
+            window.open(
+                "",
+                "_blank",
+                "width=1000,height=800"
+            );
+
+
+        if(!printWindow){
+
+            alert(
+                "Please allow pop-ups to print the output."
+            );
+
+            return;
+
+        }
+
+
+        printWindow.document.open();
+
+        printWindow.document.write(
+            outputHTML
+        );
+
+        printWindow.document.close();
+
+
+        printWindow.onload=
+            ()=>{
+                printWindow.focus();
+                printWindow.print();
+            };
+
+    };
+
+
+/* ============================================================
+   TELEGRAM SUBMISSION
+============================================================ */
+
+document.getElementById(
+    "telegramBtn"
+).onclick=
+    ()=>{
+
+        const student=
+            studentName.value.trim();
+
+
+        if(!student){
+
+            alert(
+                "Please enter your Student Name before submitting."
+            );
+
+            studentName.focus();
+
+            return;
+
+        }
+
+
+        if(!code.value.trim()){
+
+            alert(
+                "Please complete your HTML code before submitting."
+            );
+
+            return;
+
+        }
+
+
+        const s=current();
+
+        const setNumber=
+            Number(setSelect.value)+1;
+
+        const validation=
+            document.getElementById(
+                "submissionValidation"
+            ).textContent;
+
+
+        const message=
+
+`HTML5 LAB SUBMISSION
+
+Student Name: ${student}
+
+Question Set: Set ${setNumber}
+
+Task: ${s.title}
+
+Validation: ${validation}
+
+Lecturer:
+MOHD SHUKRI BIN MUHAMAD HUSIN
+
+Programme:
+Diploma in Computer Technology (Big Data)
+TVETMARA Lumut
+
+Lecturer Telegram:
++60189577991
+
+Student has completed the PRACTICAL MOBILE APPLICATION DEVELOPMENT.
+
+The rendered output can be printed/saved and attached to this Telegram chat if required.`;
+
+
+        /*
+          Telegram phone-number deep link.
+          The number is in international format.
+        */
+
+        const telegramURL=
+            "https://t.me/+60189577991?text="
+            +
+            encodeURIComponent(message);
+
+
+        window.open(
+            telegramURL,
+            "_blank",
+            "noopener,noreferrer"
+        );
+
+    };
+
+
+/* ============================================================
+   TAB KEY
+============================================================ */
+
+code.addEventListener(
+    "keydown",
+    e=>{
+
+        /* BLOCK PASTE SHORTCUTS */
+        if(
+            (e.ctrlKey && e.key.toLowerCase()==="v") ||
+            (e.ctrlKey && e.shiftKey && e.key.toLowerCase()==="v") ||
+            (e.metaKey && e.key.toLowerCase()==="v")
+        ){
+            e.preventDefault();
+
+            status.textContent=
+                "Paste is disabled. Please type your HTML code manually.";
+
+            return;
+        }
+
+        if(e.key==="Tab"){
+
+            e.preventDefault();
+
+            const start=
+                code.selectionStart;
+
+            const end=
+                code.selectionEnd;
+
+            code.value=
+                code.value.slice(0,start)
+                +
+                "  "
+                +
+                code.value.slice(end);
+
+            code.selectionStart=
+                code.selectionEnd=
+                start+2;
+
+            updateGutter();
+
+            localStorage.setItem(
+                "htmlLabDraft_"+setSelect.value,
+                code.value
+            );
+
+        }
+
+    }
+);
+
+
+/* ============================================================
+   BLOCK PASTE EVENT
+============================================================ */
+
+code.addEventListener(
+    "paste",
+    e=>{
+
+        e.preventDefault();
+
+        status.textContent=
+            "Paste is disabled. Please type your HTML code manually.";
+
+    }
+);
+
+
+/* ============================================================
+   BLOCK DRAG & DROP INTO CODE EDITOR
+============================================================ */
+
+code.addEventListener(
+    "drop",
+    e=>{
+
+        e.preventDefault();
+
+        status.textContent=
+            "Drag and drop is disabled. Please type your HTML code manually.";
+
+    }
+);
+
+code.addEventListener(
+    "dragover",
+    e=>{
+        e.preventDefault();
+    }
+);
+
+
+/* ============================================================
+   QUESTION PROTECTION
+============================================================ */
+
+/*
+  These controls deter normal copying.
+  They cannot provide absolute protection against
+  screenshots, cameras, browser extensions or developer tools.
+*/
+
+const questionPanel=
+    document.getElementById(
+        "questionPanel"
+    );
+
+
+questionPanel.addEventListener(
+    "contextmenu",
+    e=>{
+        e.preventDefault();
+    }
+);
+
+
+questionPanel.addEventListener(
+    "copy",
+    e=>{
+        e.preventDefault();
+    }
+);
+
+
+questionPanel.addEventListener(
+    "cut",
+    e=>{
+        e.preventDefault();
+    }
+);
+
+
+questionPanel.addEventListener(
+    "dragstart",
+    e=>{
+        e.preventDefault();
+    }
+);
+
+
+questionPanel.addEventListener(
+    "selectstart",
+    e=>{
+        e.preventDefault();
+    }
+);
+
+
+/* ============================================================
+   GLOBAL COPY PROTECTION
+============================================================ */
+
+document.addEventListener(
+    "keydown",
+    e=>{
+
+        /*
+          Protect the question panel from:
+          Ctrl+C
+          Ctrl+U
+          Ctrl+S
+          Ctrl+A while outside editor
+        */
+
+        const active=
+            document.activeElement;
+
+
+        const editing=
+            active===code
+            ||
+            active===studentName
+            ||
+            active.tagName==="SELECT";
+
+
+        if(
+            !editing
+            &&
+            (
+                (e.ctrlKey && e.key.toLowerCase()==="c")
+                ||
+                (e.ctrlKey && e.key.toLowerCase()==="u")
+            )
+        ){
+
+            e.preventDefault();
+
+        }
+
+    }
+);
+
+
+/* ============================================================
+   SCREENSHOT / TAB CHANGE DETERRENCE
+============================================================ */
+
+document.addEventListener(
+    "visibilitychange",
+    ()=>{
+
+        if(document.hidden){
+
+            document.getElementById(
+                "warning"
+            ).classList.add("show");
+
+        }
+
+    }
+);
+
+
+function closeWarning(){
+
+    document.getElementById(
+        "warning"
+    ).classList.remove("show");
+
+}
+
+
+/* ============================================================
+   INITIALISE
+============================================================ */
+
+setSelect.selectedIndex=0;
+
+renderInstructions();
+
+updateSubmissionInfo();
+
+</script>
+
+</body>
+</html>
+```
