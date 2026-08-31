@@ -1,2 +1,0 @@
-Place your MP3 file in this folder and rename it exactly:
-system-theme.mp3
