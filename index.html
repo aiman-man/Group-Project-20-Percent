@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#07090d" />
+  <title>JOBVERSE — Jobsheet Multiverse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="boot-splash" aria-hidden="true">
+    <i class="boot-spark" style="left:22%;top:30%"></i><i class="boot-spark" style="left:76%;top:64%;animation-delay:.6s"></i><i class="boot-spark" style="left:60%;top:22%;animation-delay:1.1s"></i><i class="boot-spark" style="left:35%;top:74%;animation-delay:1.6s"></i>
+    <div class="boot-inner"><div class="boot-mark">JOBVERSE</div><div class="boot-sub">JOBSHEET MULTIVERSE</div></div>
+  </div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header" id="site-header">
+    <button class="brand" id="brand-home" type="button" aria-label="JOBVERSE home">JOBVERSE</button>
+    <nav class="main-nav" aria-label="Primary navigation">
+      <button type="button" data-home-anchor="missions">MISSIONS</button>
+      <button type="button" data-home-anchor="protocol">PROTOCOL</button>
+      <button type="button" id="nav-student" data-home-anchor="dimensions">STUDENT PORTAL</button>
+      <button type="button" id="nav-lecturer">LECTURER</button>
+      <button type="button" id="nav-about">ABOUT US</button>
+    </nav>
+    <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="false">SOUND OFF</button>
+  </header>
+
+  <main>
+    <section id="home-view" class="view home-view" aria-label="JOBVERSE home">
+      <section class="solar-intro-section" aria-hidden="true">
+        <div class="solar-scene">
+          <i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><i class="star"></i><i class="star big"></i><i class="star big"></i><i class="star big"></i><i class="star"></i><i class="star"></i>
+          <div class="sun" id="hero-sun" title="⋆"></div>
+          <i class="comet c1"></i><i class="comet c2"></i><i class="comet c3"></i>
+          <div class="orbit-ring orbit-mercury"><div class="orbit-spin"><span class="planet-body mercury"></span></div></div>
+          <div class="orbit-ring orbit-venus"><div class="orbit-spin"><span class="planet-body venus"></span></div></div>
+          <div class="orbit-ring orbit-earth"><div class="orbit-spin"><span class="planet-body earth"></span></div></div>
+          <div class="orbit-ring orbit-mars"><div class="orbit-spin"><span class="planet-body mars"></span></div></div>
+          <div class="orbit-ring orbit-jupiter"><div class="orbit-spin"><span class="planet-body jupiter"></span></div></div>
+          <div class="orbit-ring orbit-saturn"><div class="orbit-spin"><span class="planet-body saturn"><span class="saturn-ring"></span></span></div></div>
+        </div>
+        <div class="solar-intro-copy">
+          <span class="kicker">JOBSHEET MULTIVERSE</span>
+          <b>JOBVERSE</b>
+        </div>
+        <div class="solar-intro-cue"><i></i><span>SCROLL TO ENTER</span></div>
+      </section>
+
+      <section class="hero section cinematic-scroll-section" id="hero">
+        <div class="hero-motion-layer">
+        <div class="hero-grid">
+          <div class="hero-word hero-job glitch-armed" data-text="JOB">JOB</div>
+          <div class="hero-copy">
+            <span class="kicker">JOBSHEET MULTIVERSE</span>
+            <p>Two students. Unlimited custom submissions, pushed straight to GitHub.</p>
+            <a class="text-link" href="#missions">EXPLORE ACTIVITY <span>↘</span></a>
+          </div>
+          <div class="hero-stats" aria-label="JOBVERSE statistics">
+            <div><b id="hero-stat-missions">0</b><span>SUBMISSIONS</span></div>
+            <div><b>02</b><span>STUDENTS</span></div>
+          </div>
+        </div>
+
+        <div class="hero-bottom">
+          <div class="scroll-indicator"><i></i><span>SCROLL TO EXPLORE</span></div>
+          <div class="hero-word hero-verse glitch-armed" data-text="VERSE">VERSE</div>
+        </div>
+        </div>
+      </section>
+
+      <section class="missions-section section cinematic-scroll-section" id="missions">
+        <div class="section-heading split-heading">
+          <div><span class="kicker">LIVE ACTIVITY</span><h2>RECENT SUBMISSIONS</h2></div>
+          <p>Every custom submission Aiman and Haziq create shows up here the moment it's pushed to GitHub.</p>
+        </div>
+        <div class="mission-legend"><span><i class="dot crimson"></i><span id="dim-count-s1">AIMAN · 0 SUBMISSIONS</span></span><span><i class="dot electric"></i><span id="dim-count-s2">HAZIQ · 0 SUBMISSIONS</span></span></div>
+        <div id="home-mission-grid" class="home-activity-feed" aria-label="Recent submission activity"></div>
+        <div class="section-foot"><span>CREATE. SUBMIT. PUSH. REVIEW.</span><button type="button" data-home-anchor="protocol">HOW IT WORKS ↘</button></div>
+      </section>
+
+      <section class="protocol-section section cinematic-scroll-section" id="protocol">
+        <div class="section-heading split-heading">
+          <div><span class="kicker">WORKFLOW</span><h2>MISSION PROTOCOL</h2></div>
+          <p>A simple six-step path from choosing a jobsheet to submitting PDF and live HTML work.</p>
+        </div>
+        <div class="protocol-stage-shell">
+          <div class="protocol-stage-copy">
+            <button class="protocol-arrow prev" type="button" aria-label="Previous protocol step">←</button>
+            <div class="protocol-focus">
+              <span class="kicker" id="protocol-counter">STEP 01 / 06</span>
+              <h3 id="protocol-focus-word">SELECT</h3>
+              <p id="protocol-focus-note">Choose your mission.</p>
+            </div>
+            <button class="protocol-arrow next" type="button" aria-label="Next protocol step">→</button>
+          </div>
+          <div id="protocol-steps" class="protocol-steps protocol-timeline"></div>
+        </div>
+      </section>
+
+      <section class="dimension-section section cinematic-scroll-section" id="dimensions">
+        <div class="section-heading centered-heading"><span class="kicker">TWO PORTALS</span><h2>CHOOSE YOUR PORTAL</h2><p>Same academic system. Aiman and Haziq each have 24 jobsheets.</p></div>
+        <div class="dimension-cards">
+          <button class="dimension-card crimson-card" type="button" data-enter-student="s1">
+            <span class="dimension-no">01</span><span class="dimension-name">AIMAN</span><small id="dim-count-s1-card">AIMAN · CUSTOM SUBMISSIONS</small><i>ENTER AIMAN ↗</i>
+            <div class="dimension-landscape"><div class="mini-ring"></div><div class="mini-planet"></div></div>
+          </button>
+          <button class="dimension-card electric-card" type="button" data-enter-student="s2">
+            <span class="dimension-no">02</span><span class="dimension-name">HAZIQ</span><small id="dim-count-s2-card">HAZIQ · CUSTOM SUBMISSIONS</small><i>ENTER HAZIQ ↗</i>
+            <div class="dimension-landscape"><div class="mini-ring"></div><div class="mini-planet"></div></div>
+          </button>
+        </div>
+      </section>
+
+      <section class="about-section section" id="about"><div class="section-heading split-heading"><div><span class="kicker">ABOUT US</span><h2>TEAM PROFILE</h2></div><p>Two students managing the JOBVERSE academic mission system.</p></div><div class="about-cards"><article class="about-card about-card-crimson"><div class="about-avatar">A</div><span class="about-number">01</span><h3>AIMAN</h3><p class="about-role">Frontend & Interaction Design</p><a href="mailto:aiman@example.com">aiman@example.com</a><p>Focuses on the futuristic interface, animation flow, jobsheet navigation, and responsive user experience.</p></article><article class="about-card about-card-electric"><div class="about-avatar">H</div><span class="about-number">02</span><h3>HAZIQ</h3><p class="about-role">Content & Submission Management</p><a href="mailto:haziq@example.com">haziq@example.com</a><p>Organises practical jobsheet content, submission references, testing, and review information for every module.</p></article></div></section><footer class="site-footer"><span>JOBVERSE · ACADEMIC DEMO</span><span id="footer-mission-count">0 SUBMISSIONS · AIMAN & HAZIQ</span><button type="button" id="footer-about">ABOUT US ↗</button></footer>
+    </section>
+
+    <section id="student-view" class="view student-view hidden" aria-label="Student portal">
+      <aside class="student-sidebar">
+        <button class="student-brand" type="button" data-route-home>JOBVERSE</button>
+        <div class="student-profile-mini"><div class="avatar-silhouette"></div><div><b id="side-student-name">STUDENT 01</b><span id="side-student-dimension">CRIMSON</span></div></div>
+        <nav class="student-nav" aria-label="Student portal navigation">
+          <button class="active" type="button" data-student-section="overview">▦ <span>DASHBOARD</span></button>
+          <button type="button" data-student-section="missions">▣ <span>MISSIONS</span></button>
+          <button type="button" data-student-section="submissions">▤ <span>SUBMISSIONS</span></button>
+          <button type="button" data-student-section="grades">◇ <span>GRADES</span></button>
+          <button type="button" data-student-section="feedback">◫ <span>FEEDBACK</span></button>
+        </nav>
+        <button class="sidebar-home" type="button" data-route-home>← BACK TO JOBVERSE</button>
+      </aside>
+
+      <div class="student-main">
+        <section class="student-hero" id="student-overview">
+          <div class="student-hero-copy"><span class="kicker" id="student-path-label">CRIMSON PATH</span><h1 id="student-title">STUDENT 01</h1><p>Create your own submission, attach your files, then push it straight to GitHub.</p><div class="hero-copy-actions"><button class="primary-button" type="button" id="new-submission-btn">+ NEW SUBMISSION ↗</button><button class="outline-button" type="button" id="github-setup-btn">⚙ GITHUB SETUP</button></div></div>
+          <div class="portal-art planet-portal" aria-hidden="true"><div class="planet-orbit-glow"></div><canvas id="planet-canvas" class="planet-canvas"></canvas></div>
+          <div class="progress-panel"><span>MISSION PROGRESS</span><div class="progress-ring" id="progress-ring"><b id="progress-count">0</b><small id="progress-of-label">OF 0</small></div><strong id="progress-percent">0%</strong><div class="progress-breakdown"><div><b id="metric-graded">0</b><span>GRADED</span></div><div><b id="metric-submitted">0</b><span>SUBMITTED</span></div><div><b id="metric-open">0</b><span>OPEN</span></div></div></div>
+        </section>
+
+        <section class="journey-section" id="student-journey-wrap">
+          <div class="journey-label"><span>YOUR MISSIONS</span><b id="journey-count-label">0 SUBMISSIONS</b></div>
+          <div id="student-journey" class="student-journey" aria-label="24 mission journey"></div>
+        </section>
+
+        <section class="student-dashboard-grid" id="student-dashboard">
+          <article class="current-mission-panel" id="current-mission"></article>
+          <aside class="feedback-panel" id="student-feedback"></aside>
+          <section class="recent-panel" id="recent-submissions"><div class="panel-heading"><span>RECENT SUBMISSIONS</span><button type="button" data-student-section="submissions">VIEW ALL ↗</button></div><div id="recent-submission-list"></div></section>
+          <section class="quick-panel"><div class="panel-heading"><span>QUICK ACTIONS</span></div><div class="quick-grid"><button type="button" data-student-section="missions">⇧<span>UPLOAD<br>SUBMISSION</span></button><button type="button" id="quick-github-setup">⚙<span>GITHUB<br>SETUP</span></button><button type="button" data-student-section="feedback">◫<span>REVIEW<br>FEEDBACK</span></button><button type="button" data-route-home>↙<span>BACK TO<br>JOBVERSE</span></button></div></section>
+        </section>
+
+        <section class="portal-section hidden" id="student-missions"><div class="portal-section-heading"><span class="kicker">MISSION INDEX</span><h2 id="mission-index-title">0 SUBMISSIONS</h2><div class="mission-controls"><input id="student-search" type="search" placeholder="Search missions…" aria-label="Search missions"><div class="jv-select" id="jv-student-filter"><button type="button" class="jv-select-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="jv-select-value">ALL STATUS</span><i>▾</i></button><ul class="jv-select-menu hidden" role="listbox"><li role="option" data-value="ALL" aria-selected="true">ALL STATUS</li><li role="option" data-value="OPEN" aria-selected="false">OPEN</li><li role="option" data-value="SUBMITTED" aria-selected="false">SUBMITTED</li><li role="option" data-value="GRADED" aria-selected="false">GRADED</li><li role="option" data-value="RESUBMISSION REQUIRED" aria-selected="false">RESUBMISSION</li></ul><select id="student-filter" aria-hidden="true" tabindex="-1"><option value="ALL">ALL STATUS</option><option value="OPEN">OPEN</option><option value="SUBMITTED">SUBMITTED</option><option value="GRADED">GRADED</option><option value="RESUBMISSION REQUIRED">RESUBMISSION</option></select></div></div></div><div id="student-mission-list" class="student-mission-list"></div></section>
+        <section class="portal-section hidden" id="student-submissions"><div class="portal-section-heading"><span class="kicker">SUBMISSION ARCHIVE</span><h2>RECENT WORK</h2></div><div id="student-submission-table"></div></section>
+        <section class="portal-section hidden" id="student-grades"><div class="portal-section-heading"><span class="kicker">ASSESSMENT</span><h2>GRADES</h2></div><div id="student-grade-table"></div></section>
+        <section class="portal-section hidden" id="student-feedback-section"><div class="portal-section-heading"><span class="kicker">REVIEW SIGNAL</span><h2>FEEDBACK</h2></div><div id="all-feedback"></div></section>
+      </div>
+    </section>
+
+    <section id="lecturer-view" class="view lecturer-view hidden" aria-label="Lecturer marking dashboard">
+      <aside class="lecturer-sidebar">
+        <div>
+          <button class="student-brand" type="button" data-route-home>JOBVERSE</button>
+          <span class="kicker" style="display:block;margin-top:22px">STAFF DASHBOARD</span>
+        </div>
+        <nav aria-label="Lecturer sections">
+          <button type="button" class="active" data-lecturer-tab="overview">▦ OVERVIEW</button>
+          <button type="button" data-lecturer-tab="queue">▣ MARKING QUEUE</button>
+          <button type="button" data-lecturer-tab="compare">◇ COMPARE STUDENTS</button>
+        </nav>
+        <button type="button" data-route-home>← BACK TO JOBVERSE</button>
+      </aside>
+      <div class="lecturer-main">
+        <header class="lecturer-header">
+          <div><span class="kicker">REVIEW &amp; GRADE</span><h1>MARKING CENTER</h1></div>
+          <div><div class="jv-select" id="jv-lecturer-select"><button type="button" class="jv-select-trigger" aria-haspopup="listbox" aria-expanded="false"><span class="jv-select-value">AIMAN</span><i>▾</i></button><ul class="jv-select-menu hidden" role="listbox"><li role="option" data-value="s1" aria-selected="true">AIMAN</li><li role="option" data-value="s2" aria-selected="false">HAZIQ</li></ul><select id="lecturer-student-select" aria-hidden="true" tabindex="-1"><option value="s1">AIMAN</option><option value="s2">HAZIQ</option></select></div></div>
+        </header>
+        <div id="lecturer-workspace"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <dialog id="lecturer-login" class="lecturer-login">
+    <form method="dialog" class="login-card" onsubmit="return false">
+      <button id="lecturer-login-close" class="dialog-close" type="button" aria-label="Close">×</button>
+      <span class="kicker">STAFF ACCESS</span>
+      <h2>LECTURER LOGIN</h2>
+      <p>Enter the review passcode to open the marking dashboard.</p>
+      <label>PASSCODE<input id="lecturer-passcode" type="password" placeholder="••••••••" autocomplete="off"></label>
+      <small style="display:block;margin-top:10px;font:600 7px var(--mono);letter-spacing:.1em;color:#6f695f">DEMO PASSCODE // LECTURER2026</small>
+      <p id="lecturer-login-error" class="login-error"></p>
+      <button id="lecturer-login-submit" class="primary-button" type="button">ENTER DASHBOARD ↗</button>
+    </form>
+  </dialog>
+
+  <div id="cursor-light" aria-hidden="true"></div>
+
+  <dialog id="github-setup" class="lecturer-login">
+    <form method="dialog" class="login-card" onsubmit="return false">
+      <button id="github-setup-close" class="dialog-close" type="button" aria-label="Close">×</button>
+      <span class="kicker">GITHUB CONNECTION</span>
+      <h2>PUSH SETUP</h2>
+      <p>Your token is saved only in this browser (localStorage). It never gets written into this HTML file, so it is safe to share the file with others.</p>
+      <label>OWNER / ORG<input id="gh-owner" type="text" placeholder="e.g. aiman-dev" autocomplete="off"></label>
+      <label>REPOSITORY<input id="gh-repo" type="text" placeholder="e.g. jobverse-submissions" autocomplete="off"></label>
+      <label>BRANCH<input id="gh-branch" type="text" placeholder="main" autocomplete="off"></label>
+      <label>FOLDER PREFIX (optional)<input id="gh-prefix" type="text" placeholder="submissions" autocomplete="off"></label>
+      <label>PERSONAL ACCESS TOKEN<input id="gh-token" type="password" placeholder="ghp_…" autocomplete="off"></label>
+      <p id="github-setup-error" class="login-error"></p>
+      <button id="github-setup-save" class="primary-button" type="button">SAVE CONNECTION ↗</button>
+    </form>
+  </dialog>
+
+  <dialog id="mission-dialog" class="mission-dialog">
+    <form method="dialog" class="mission-modal" onsubmit="return false">
+      <button id="mission-close" class="dialog-close" type="button" aria-label="Close">×</button>
+      <div class="mission-modal-main"><span class="kicker" id="dialog-kicker">MISSION 01</span><input id="dialog-title-input" class="dialog-title-input" type="text" placeholder="Give your submission a title…" maxlength="120"><textarea id="dialog-description-input" class="dialog-description-input" placeholder="Describe what you built or submitted…" maxlength="600" rows="2"></textarea><div id="dialog-meta" class="dialog-meta"></div>
+        <div class="dual-upload-grid">
+          <label class="package-slot" id="pdf-slot" for="mission-pdf-file"><span class="slot-type">REPORT PDF</span><strong>UPLOAD PDF</strong><small>Required evidence / report file<br>Accepted: .PDF only</small><span class="slot-file" id="pdf-slot-file">NO PDF SELECTED</span></label>
+          <input id="mission-pdf-file" type="file" accept="application/pdf,.pdf" hidden>
+          <label class="package-slot" id="html-slot" for="mission-html-file"><span class="slot-type">LIVE WEBSITE HTML</span><strong>UPLOAD HTML</strong><small>Required live website preview<br>Accepted: .HTML / .HTM only</small><span class="slot-file" id="html-slot-file">NO HTML SELECTED</span></label>
+          <input id="mission-html-file" type="file" accept="text/html,.html,.htm" hidden>
+        </div>
+        <div id="dialog-package-actions" class="package-preview-actions"></div>
+        <p class="package-hint">SUBMISSION RULE // Both PDF and HTML are required. For reliable LIVE preview, use a self-contained HTML file or online assets.</p>
+        <div class="dialog-actions"><button id="mission-delete" type="button" class="outline-button danger-button">DELETE</button><button id="mission-save" type="button" class="outline-button">SAVE DRAFT</button><button id="mission-submit" type="button" class="primary-button">SUBMIT & PUSH TO GITHUB ↗</button></div></div>
+      <aside class="mission-modal-side"><span class="kicker">REVIEW FEEDBACK</span><div id="dialog-grade" class="dialog-grade"></div><p id="dialog-feedback"></p><div id="dialog-versions" class="version-list"></div></aside>
+    </form>
+  </dialog>
+
+  <dialog id="submission-preview" class="submission-preview">
+    <div class="preview-shell">
+      <header class="preview-head"><div><b id="preview-title">PREVIEW</b><span id="preview-file-name"></span></div><button id="preview-close" type="button" aria-label="Close preview">×</button></header>
+      <iframe id="preview-frame" title="Submission preview" sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-popups allow-downloads"></iframe>
+      <div id="preview-pdf-container" style="display:none;width:100%;height:100%"></div>
+    </div>
+  </dialog>
+
+  <div class="portal-warp" id="portal-warp" aria-hidden="true"><div class="warp-core"></div><div class="warp-ring w1"></div><div class="warp-ring w2"></div><div class="warp-ring w3"></div></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js"></script>
+  <audio id="bg-music" src="music.mp3" loop preload="none"></audio>
+</body>
+</html>
