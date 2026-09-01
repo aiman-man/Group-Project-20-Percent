@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Last Supper</title>
+  <style>
+    /* External CSS – The Last Supper */
+
+    /* 1. Reset selectors */
+    html, body, header, footer, hgroup, nav, article, section, figure, figcaption,
+    h1, h2, h3, ul, li, div, p, img {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      vertical-align: baseline;
+    }
+
+    /* 2. Body */
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #333333;
+      background-image: url(stucco.png);
+      line-height: 1.428571429;
+    }
+
+    /* 3. Header and navigation */
+    header {
+      width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    div.topHeaderRow {
+      background-color: #222222;
+      font-size: 0.9em;
+      height: 3em;
+      text-align: center;
+      line-height: 3em;
+      padding-right: 1em;
+    }
+    div.topHeaderRow a {
+      color: #999999;
+      margin-right: 2em;
+    }
+    ul {
+      list-style: none;
+    }
+    li {
+      display: inline;
+    }
+    li a {
+      text-decoration: none;
+    }
+    h1 {
+      font-size: 4em;
+      font-weight: bold;
+    }
+    div.mainNavigationRow {
+      background-color: #f8f8f8;
+      height: 3em;
+      border: 1pt solid #e7e7e7;
+      line-height: 3em;
+    }
+    div.mainNavigationRow a {
+      color: #777777;
+      font-weight: bold;
+      margin-left: 1em;
+      margin-right: 2em;
+    }
+
+    /* 4. Main content */
+    main {
+      width: 880px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 1em;
+      background-color: #ffffff;
+      padding: 10px;
+      border: 1pt solid #e7e7e7;
+    }
+    h2 {
+      font-size: 1.75em;
+    }
+    h3 {
+      font-size: 1.25em;
+      border-bottom: 1pt solid #e7e7e7;
+      margin-top: 1em;
+      margin-bottom: 0.75em;
+    }
+    main figure {
+      width: 300px;
+      float: left;
+      margin-top: 1em;
+      margin-left: 310px;
+    }
+    p.price {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: red;
+      margin-top: 1em;
+    }
+
+    /* 5. Buttons, table and similar items */
+    div.buttons {
+      border: 1pt solid #e7e7e7;
+      margin-top: 1em;
+      padding: 10px;
+    }
+    div.buttons button {
+      width: 250px;
+      height: 3em;
+      margin-left: 1em;
+      line-height: 3em;
+    }
+    div.buttons a {
+      text-decoration: none;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    table th {
+      font-weight: bold;
+      font-size: 1em;
+      text-align: left;
+    }
+    div.similar {
+      clear: left;
+      margin-top: 2em;
+      height: 250px;
+    }
+    div.box {
+      width: 180px;
+      padding: 0.5em;
+      border: 1pt solid #e7e7e7;
+      margin-right: 1em;
+      float: left;
+    }
+    div.box img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* 6. Footer */
+    footer {
+      clear: left;
+      width: 900px;
+      height: 3em;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 1em;
+      border: 1pt solid #e7e7e7;
+      background-color: #222222;
+      color: #999999;
+      font-size: 0.9em;
+      text-align: center;
+      line-height: 3em;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="topHeaderRow">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Gallery</a></li>
+      <li><a href="#">Shop</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="mainNavigationRow">
+    <h1>The Last Supper</h1>
+  </div>
+</header>
+
+<main>
+  <h2>Il Cenacolo</h2>
+  <h3>By Leonardo da Vinci</h3>
+
+  <figure>
+    <img src="lastsupper.jpg" alt="The Last Supper" width="300">
+    <figcaption>The Last Supper – 1498</figcaption>
+  </figure>
+
+  <p class="price">RM 700,000,000</p>
+
+  <div class="buttons">
+    <button><a href="#">Add to Wish List</a></button>
+    <button><a href="#">Add to Shopping Cart</a></button>
+  </div>
+
+  <h3>Product Details</h3>
+  <table>
+    <tr><th>Date</th><td>1498</td></tr>
+    <tr><th>Medium</th><td>Tempera and oil on plaster</td></tr>
+    <tr><th>Dimensions</th><td>460cm x 880cm</td></tr>
+    <tr><th>Home</th><td>Santa Maria delle Grazie, Milan</td></tr>
+    <tr><th>Genres</th><td>Renaissance, Religious</td></tr>
+    <tr><th>Subjects</th><td>Jesus, Apostles, Last Supper</td></tr>
+  </table>
+
+  <div class="similar">
+    <h3>Similar Items</h3>
+
+    <div class="box">
+      <img src="monalisa.jpg" alt="Mona Lisa" width="160">
+      <p>Mona Lisa</p>
+      <p>RM 850,000,000</p>
+    </div>
+
+    <div class="box">
+      <img src="vitruvian.jpg" alt="Vitruvian Man" width="160">
+      <p>Vitruvian Man</p>
+      <p>RM 150,000,000</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2026 Art Gallery. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
