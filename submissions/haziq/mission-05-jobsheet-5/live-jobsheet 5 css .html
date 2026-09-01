@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workshop Registration</title>
+  <style>
+    /* External CSS – Workshop Registration */
+
+    /* 1. Reset selectors */
+
+    /* 2. Body */
+
+    /* 3. Header and navigation */
+
+    /* 4. Main content */
+
+    /* 5. Buttons, table and similar items */
+    table {
+      width: 60%;
+    }
+    label {
+      font-weight: bold;
+    }
+    input[type="range"] {
+      width: 60%;
+    }
+    .fancyBtn {
+      background-color: #bddbfa;
+    }
+
+    /* 6. Footer */
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topHeaderRow">
+      <ul>
+        <li><a href="Lab4.html">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Art Works</a></li>
+        <li><a href="#">Artists</a></li>
+      </ul>
+    </div>
+    <div class="mainNavigationRow"><h1>Art Workshop Store</h1></div>
+  </header>
+
+  <main>
+    <h2>Workshop Registration</h2>
+    <form>
+      <h3>1. User Info</h3>
+      <label>First Name</label><input type="text" name="firstName">
+      <label>Last Name</label><input type="text" name="lastName">
+      <label>Email</label><input type="email" name="email" placeholder="format for email is xxx@yyy.zzz">
+      <label>Password</label><input type="password" name="password" placeholder="at least 8 characters">
+      <label>Password Repeat</label><input type="password" name="passwordRepeat" placeholder="at least 8 characters">
+
+      <h3>2. Location</h3>
+      <label>Address</label><input type="text" name="address">
+      <label>City</label><input type="text" name="city">
+      <label>State</label><input type="text" name="state">
+      <label>Zip</label><input type="text" name="zip">
+      <label>Phone</label><input type="tel" name="phone" placeholder="NNN-NNN-NNNN">
+      <label>Country</label>
+      <select name="country">
+        <option>United Kingdom</option>
+        <option>Malaysia</option>
+        <option>United Kingdom</option>
+        <option>Australia</option>
+      </select>
+      <label>Continent</label>
+      <div>
+        <label><input type="radio" name="continent"> North America</label>
+        <label><input type="radio" name="continent"> Europe</label>
+        <label><input type="radio" name="continent"> South America</label>
+      </div>
+
+      <h3>3. Personal Details</h3>
+      <label>Birth Day</label><input type="date" name="birthDay">
+      <label>Favorite Color</label><input type="color" name="favoriteColor">
+      <label>Interest In Art</label>
+      <span>Minimal</span><input type="range" name="interest" min="0" max="100"><span>Love it!</span>
+
+      <h3>4. All Done</h3>
+      <label><input type="checkbox" name="agree"> I agree to the <a href="#">Terms of the Site</a></label>
+      <button type="button" class="fancyBtn">✓ Sign me up!</button>
+    </form>
+  </main>
+
+  <footer><p>All images are copyright to their owners. This is a hypothetical site.</p></footer>
+</body>
+</html>
