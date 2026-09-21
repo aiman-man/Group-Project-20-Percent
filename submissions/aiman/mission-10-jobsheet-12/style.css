@@ -1,0 +1,15 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 30px;
+  background: #f4f4f4;
+}
+#div1 {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+button {
+  padding: 10px 16px;
+  cursor: pointer;
+}
