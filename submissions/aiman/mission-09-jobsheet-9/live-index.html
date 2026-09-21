@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="lab9.css">
+    <script src="data.js"></script>
+    <script src="function.js"></script>
+</head>
+<body>
+
+<main>
+    <h1>SHOPPING CART</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">Product</th>
+                <th>#</th>
+                <th>Price</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <script src="Lab7.js"></script>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="4" class="right">Subtotal</td>
+                <td class="right">RM<script>outputCurrency(subtotal)</script></td>
+            </tr>
+            <tr>
+                <td colspan="4" class="right">Tax</td>
+                <td class="right">RM<script>outputCurrency(tax)</script></td>
+            </tr>
+            <tr>
+                <td colspan="4" class="right">Shipping</td>
+                <td class="right">RM<script>outputCurrency(shipping)</script></td>
+            </tr>
+            <tr>
+                <td colspan="4" class="right"><strong>Grand Total</strong></td>
+                <td class="right"><strong>RM<script>outputCurrency(grand)</script></strong></td>
+            </tr>
+        </tfoot>
+    </table>
+</main>
+
+</body>
+</html>
