@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Membership</title>
+    <link rel="stylesheet" href="Lab8.css">
+    <script src="Lab9.js"></script>
+</head>
+<body>
+<header>
+    <h1>Club Membership Form</h1>
+</header>
+<main>
+<form id="mainForm" action="#" method="post">
+    <div class="form-row">
+        <label for="field1">Member Name</label>
+        <input type="text" id="field1" class="required hilightable">
+    </div>
+    <div class="form-row">
+        <label for="field2">Membership ID</label>
+        <input type="text" id="field2" class="required hilightable">
+    </div>
+
+    <div class="form-row">
+        <label for="field3">Email</label>
+        <input type="text" id="field3" class="required hilightable">
+    </div>
+    <div class="form-row">
+        <label for="field4">Club Category</label>
+        <select id="field4" class="required hilightable">
+            <option value="">Choose an option</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="field5">Phone Number</label>
+        <input type="text" id="field5" class="required hilightable">
+    </div>
+    <div class="form-actions">
+        <button type="submit">Submit</button>
+        <button type="reset">Clear Form</button>
+    </div>
+</form>
+</main>
+</body>
+</html>
