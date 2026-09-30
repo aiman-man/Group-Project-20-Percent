@@ -1,0 +1,12 @@
+{
+  "number": 13,
+  "title": "JOBSHEET 13 - Web Session Storage",
+  "description": "Built a Session Login webpage using Session Storage to handle login, session checking, and logout, with a visit counter that tracks page loads during the session.",
+  "status": "SUBMITTED",
+  "submittedAt": "2026-09-30T15:21:42.286Z",
+  "gradedAt": null,
+  "mark": null,
+  "maxMark": 100,
+  "feedback": "",
+  "resubmissionNote": ""
+}
