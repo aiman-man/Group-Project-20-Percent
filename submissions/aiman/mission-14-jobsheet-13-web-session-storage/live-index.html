@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session Login</title>
+<style>
+body{font-family:Arial,sans-serif;background:#eef2f7;margin:0;padding:30px;color:#1f2937}
+.card{max-width:420px;margin:auto;background:white;border:1px solid #d1d9e6;border-radius:14px;padding:22px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+h2{text-align:center;color:#1e3a8a;margin:0 0 18px}
+input{width:100%;padding:10px;margin:6px 0;border:1px solid #cbd5e1;border-radius:8px;font-size:14px;box-sizing:border-box}
+button{background:#2563eb;color:white;border:0;border-radius:8px;padding:10px 14px;margin:8px 3px 0 0;font-size:14px;font-weight:bold;cursor:pointer}
+#btnLogout{background:#dc2626}
+#output{margin:16px 0 4px;padding:10px;background:#f1f5f9;border-radius:8px;min-height:20px}
+#visits{margin:6px 0 0;color:#475569;font-size:14px}
+</style>
+</head>
+<body>
+<div class="card">
+<h2 id="heading">Session Login</h2>
+
+<input type="text" id="txtUser" placeholder="Enter username">
+
+<button id="btnLogin">Login</button>
+<button id="btnCheck">Check Session</button>
+<button id="btnLogout">Logout</button>
+
+<p id="output"></p>
+<p id="visits"></p>
+</div>
+
+<script>
+// Visit counter (runs every time the page loads)
+var visits = sessionStorage.getItem("visits");
+if (visits === null) {
+  visits = 1;
+} else {
+  visits = parseInt(visits) + 1;
+}
+sessionStorage.setItem("visits", visits);
+document.getElementById("visits").textContent = "Visits this session: " + visits;
+
+// Login
+document.getElementById("btnLogin").addEventListener("click", function () {
+  var user = document.getElementById("txtUser").value;
+  if (user === "") {
+    document.getElementById("output").textContent = "Please enter a username.";
+  } else {
+    sessionStorage.setItem("username", user);
+    document.getElementById("output").textContent = "Login successful.";
+  }
+});
+
+// Check Session
+document.getElementById("btnCheck").addEventListener("click", function () {
+  var user = sessionStorage.getItem("username");
+  if (user !== null) {
+    document.getElementById("output").textContent = "Welcome, " + user;
+  } else {
+    document.getElementById("output").textContent = "No active session.";
+  }
+});
+
+// Logout
+document.getElementById("btnLogout").addEventListener("click", function () {
+  sessionStorage.removeItem("username");
+  document.getElementById("txtUser").value = "";
+  document.getElementById("output").textContent = "Logout successful.";
+});
+</script>
+</body>
+</html>
