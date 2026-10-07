@@ -1,12 +1,12 @@
 {
-  "number": 13,
+  "number": 2,
   "title": "JOBSHEET 2 - HTML5",
   "description": "Created an HTML5 webpage to compare digital tablets using videos, specifications, brand information, and official website links.",
-  "status": "SUBMITTED",
+  "status": "GRADED",
   "submittedAt": "2026-10-07T07:50:22.252Z",
-  "gradedAt": null,
-  "mark": null,
+  "gradedAt": "2026-10-07T10:21:43.804Z",
+  "mark": 100,
   "maxMark": 100,
-  "feedback": "",
+  "feedback": "nice",
   "resubmissionNote": ""
 }
