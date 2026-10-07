@@ -1,0 +1,12 @@
+{
+  "number": 14,
+  "title": "JOBSHEET 12 - Web Local Storage",
+  "description": "Built a Student Profile webpage using Local Storage to save, load, and clear name and course data, with a counter that tracks how many times the data has been saved.",
+  "status": "SUBMITTED",
+  "submittedAt": "2026-10-07T08:15:38.285Z",
+  "gradedAt": null,
+  "mark": null,
+  "maxMark": 100,
+  "feedback": "",
+  "resubmissionNote": ""
+}
