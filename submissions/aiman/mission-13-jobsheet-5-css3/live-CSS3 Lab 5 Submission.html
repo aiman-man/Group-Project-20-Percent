@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seller Registration</title>
+  
+  <style>
+    
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f7fb;
+    color: #263238;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #1f3c5b;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.topHeaderRow {
+    background-color: #172d44;
+    padding: 0 8%;
+}
+
+.topHeaderRow ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.topHeaderRow li {
+    display: inline-block;
+}
+
+.topHeaderRow a {
+    display: block;
+    padding: 14px 18px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s;
+}
+
+.topHeaderRow a:hover {
+    color: #bddbfa;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-bottom-color: #bddbfa;
+}
+
+.mainNavigationRow {
+    padding: 25px 8%;
+    background-color: #24496e;
+}
+
+.mainNavigationRow h1 {
+    margin: 0;
+    color: white;
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+
+main {
+    width: 90%;
+    max-width: 900px;
+    margin: 45px auto;
+}
+
+main > h2 {
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    color: #1f3c5b;
+    font-size: 32px;
+    border-bottom: 4px solid #bddbfa;
+}
+
+form {
+    background-color: white;
+    padding: 35px 40px;
+    border: 1px solid #d7e1eb;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(31, 60, 91, 0.08);
+}
+
+form h3 {
+    margin-top: 35px;
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    background-color: #edf5fc;
+    color: #1f3c5b;
+    border-left: 5px solid #4b89bd;
+    border-radius: 7px;
+    font-size: 18px;
+}
+
+form h3:first-child {
+    margin-top: 0;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #334e68;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cad8e5;
+    border-radius: 8px;
+    background-color: #f9fbfd;
+    color: #243b53;
+    font-size: 14px;
+    outline: none;
+    transition: 0.25s;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
+input[type="tel"]:hover,
+input[type="date"]:hover,
+select:hover {
+    border-color: #8db9dc;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+select:focus {
+    background-color: white;
+    border-color: #4b89bd;
+    box-shadow: 0 0 0 3px rgba(75, 137, 189, 0.15);
+}
+
+input::placeholder {
+    color: #9aa9b7;
+}
+
+select {
+    cursor: pointer;
+}
+
+form > div {
+    padding: 15px 18px;
+    margin-top: 5px;
+    background-color: #f8fafc;
+    border: 1px solid #dbe5ee;
+    border-radius: 10px;
+}
+
+form > div label {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    width: 17px;
+    height: 17px;
+    margin-right: 7px;
+    accent-color: #4b89bd;
+    cursor: pointer;
+}
+
+input[type="color"] {
+    width: 90px;
+    height: 45px;
+    padding: 4px;
+    background-color: white;
+    border: 1px solid #cad8e5;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+input[type="range"] {
+    width: 60%;
+    margin: 18px 12px;
+    vertical-align: middle;
+    accent-color: #4b89bd;
+    cursor: pointer;
+}
+
+form > span {
+    color: #607d94;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    margin-right: 8px;
+    accent-color: #4b89bd;
+    cursor: pointer;
+}
+
+form h3:last-of-type + label {
+    padding: 15px 18px;
+    background-color: #f8fafc;
+    border: 1px solid #dbe5ee;
+    border-radius: 8px;
+    font-weight: normal;
+}
+
+form a {
+    color: #2f75b5;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+form a:hover {
+    text-decoration: underline;
+}
+
+.fancyBtn {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px 20px;
+    background-color: #bddbfa;
+    color: #183b56;
+    border: 1px solid #9cc5eb;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(31, 60, 91, 0.15);
+    transition: 0.25s;
+}
+
+.fancyBtn:hover {
+    transform: translateY(-2px);
+    filter: brightness(0.96);
+    box-shadow: 0 7px 15px rgba(31, 60, 91, 0.20);
+}
+
+.fancyBtn:active {
+    transform: translateY(0);
+}
+
+table {
+    width: 60%;
+    margin: 25px auto;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(31, 60, 91, 0.1);
+}
+
+th,
+td {
+    padding: 12px 15px;
+    border: 1px solid #d7e2ec;
+    text-align: left;
+}
+
+th {
+    background-color: #24496e;
+    color: white;
+}
+
+footer {
+    margin-top: 50px;
+    padding: 22px;
+    background-color: #172d44;
+    color: #cbd6e2;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    font-size: 13px;
+}
+
+@media screen and (max-width: 700px) {
+    .topHeaderRow {
+        padding: 0;
+    }
+
+    .topHeaderRow ul {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .topHeaderRow a {
+        padding: 12px 10px;
+    }
+
+    .mainNavigationRow {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .mainNavigationRow h1 {
+        font-size: 25px;
+    }
+
+    main {
+        width: 92%;
+        margin: 25px auto;
+    }
+
+    main > h2 {
+        font-size: 26px;
+    }
+
+    form {
+        padding: 25px 20px;
+    }
+
+    form > div label {
+        display: flex;
+        margin-right: 0;
+    }
+
+    input[type="range"] {
+        width: 60%;
+    }
+
+    table {
+        width: 60%;
+    }
+}
+  
+</style>
+</head>
+<body>
+  <header>
+    <div class="topHeaderRow">
+      <ul>
+        <li><a href="Lab4.html">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Art Works</a></li>
+        <li><a href="#">Artists</a></li>
+      </ul>
+    </div>
+    <div class="mainNavigationRow"><h1>Artist Marketplace</h1></div>
+  </header>
+  <main>
+    <h2>Seller Registration</h2>
+    <form>
+      <h3>1. User Info</h3>
+      <label>First Name</label><input type="text" name="firstName">
+      <label>Last Name</label><input type="text" name="lastName">
+      <label>Email</label><input type="email" name="email" placeholder="format for email is xxx@yyy.zzz">
+      <label>Password</label><input type="password" name="password" placeholder="at least 8 characters">
+      <label>Password Repeat</label><input type="password" name="passwordRepeat" placeholder="at least 8 characters">
+      <h3>2. Location</h3>
+      <label>Address</label><input type="text" name="address">
+      <label>City</label><input type="text" name="city">
+      <label>State</label><input type="text" name="state">
+      <label>Zip</label><input type="text" name="zip">
+      <label>Phone</label><input type="tel" name="phone" placeholder="NNN-NNN-NNNN">
+      <label>Country</label>
+      <select name="country"><option>Malaysia</option><option>Malaysia</option><option>United Kingdom</option><option>Australia</option></select>
+      <label>Continent</label>
+      <div>
+        <label><input type="radio" name="continent"> North America</label>
+        <label><input type="radio" name="continent"> Europe</label>
+        <label><input type="radio" name="continent"> South America</label>
+      </div>
+      <h3>3. Personal Details</h3>
+      <label>Birth Day</label><input type="date" name="birthDay">
+      <label>Favorite Color</label><input type="color" name="favoriteColor">
+      <label>Interest In Art</label>
+      <span>Minimal</span><input type="range" name="interest" min="0" max="100"><span>Love it!</span>
+      <h3>4. All Done</h3>
+      <label><input type="checkbox" name="agree"> I agree to the <a href="#">Terms of the Site</a></label>
+      <button type="button" class="fancyBtn">✓ Sign me up!</button>
+    </form>
+  </main>
+  <footer><p>All images are copyright to their owners. This is a hypothetical site.</p></footer>
+</body>
+</html>
