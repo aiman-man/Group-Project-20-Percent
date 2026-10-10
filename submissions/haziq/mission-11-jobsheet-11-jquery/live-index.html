@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Task Manager - jQuery Project</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="jquery.js"></script>
+  <script src="script.js"></script>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Student Task Manager</h1>
+      <button id="themeBtn" type="button">Dark Mode</button>
+    </header>
+
+    <section id="addBox">
+      <input type="text" id="taskInput" placeholder="Enter a new task..." maxlength="80">
+      <select id="priority">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button id="addBtn" type="button">Add Task</button>
+      <p id="message"></p>
+    </section>
+
+    <section id="tools">
+      <input type="text" id="searchInput" placeholder="Search tasks...">
+      <div id="filters">
+        <button type="button" class="filterBtn active" data-filter="all">All</button>
+        <button type="button" class="filterBtn" data-filter="active">Active</button>
+        <button type="button" class="filterBtn" data-filter="done">Done</button>
+      </div>
+    </section>
+
+    <ul id="taskList"></ul>
+    <p id="emptyMsg">No tasks to show.</p>
+
+    <footer>
+      <span id="counter"></span>
+      <button id="clearDone" type="button">Clear Completed</button>
+    </footer>
+  </div>
+</body>
+</html>
