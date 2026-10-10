@@ -1,0 +1,142 @@
+/* External CSS - Workshop Registration (styleLab5.css) */
+
+/* 1. Reset selectors */
+html, body, header, footer, hgroup, nav, article, section, figure, figcaption, h1, h2, h3, ul, li, div, p, img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* 2. Body */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #333333;
+  background-color: #e8f2fd;
+  background-image:
+    radial-gradient(circle, #bddbfa 3px, transparent 4px),
+    radial-gradient(circle, #d6e8fb 3px, transparent 4px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  line-height: 1.428571429;
+}
+
+/* 3. Header and navigation */
+header {
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.topHeaderRow {
+  background-color: #222222;
+  font-size: 0.9em;
+  height: 3em;
+  text-align: center;
+  line-height: 3em;
+  padding-right: 1em;
+}
+
+div.topHeaderRow a {
+  color: #999999;
+  margin-right: 2em;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: inline;
+}
+
+li a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 4em;
+  font-weight: bold;
+}
+
+div.mainNavigationRow {
+  background-color: #f8f8f8;
+  height: 3em;
+  border: 1pt solid #e7e7e7;
+  line-height: 3em;
+}
+
+/* 4. Main content */
+main {
+  width: 880px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  background-color: #ffffff;
+  padding: 10px;
+  border: 1pt solid #e7e7e7;
+}
+
+h2 {
+  font-size: 1.75em;
+}
+
+h3 {
+  font-size: 1.25em;
+  border-bottom: 1pt solid #e7e7e7;
+  margin-top: 1em;
+  margin-bottom: 0.75em;
+}
+
+/* 5. Form: tables, labels, inputs and buttons */
+table {
+  width: 60%;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 0.5em;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+select {
+  width: 60%;
+  padding: 4px;
+}
+
+input[type="range"] {
+  width: 60%;
+}
+
+.fancyBtn {
+  background-color: #bddbfa;
+  border: 1pt solid #e7e7e7;
+  padding: 0.6em 1.2em;
+  margin-top: 1em;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* 6. Footer */
+footer {
+  clear: left;
+  width: 900px;
+  height: 3em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  border: 1pt solid #e7e7e7;
+  background-color: #222222;
+  color: #999999;
+  font-size: 0.9em;
+  text-align: center;
+  line-height: 3em;
+}
