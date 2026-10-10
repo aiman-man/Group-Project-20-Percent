@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mamak Order Tracker – Web Storage (localStorage)</title>
+<link rel="stylesheet" href="haziq-12-mamak-order-tracker-web-storage.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>🍛 Mamak Order Tracker</h1>
+    <p>Job Sheet 12 · Web Storage – localStorage · by Haziq</p>
+  </div>
+  <button id="themeBtn" class="ghost" type="button">🌙 Dark mode</button>
+</header>
+
+<main class="layout">
+  <section class="card" aria-labelledby="menuTitle">
+    <h2 id="menuTitle">Menu</h2>
+    <div id="menu" class="menu"></div>
+  </section>
+
+  <section class="card" aria-labelledby="orderTitle">
+    <h2 id="orderTitle">Current Order</h2>
+    <label class="field">Table
+      <select id="tableSel"></select>
+    </label>
+    <p id="cartEmpty" class="empty">No items yet. Tap a menu item to add it.</p>
+    <ul id="cartList" class="cart"></ul>
+    <div class="total">Total: <strong id="cartTotal">RM 0.00</strong></div>
+    <div class="row">
+      <button id="placeBtn" class="primary" type="button">Place Order</button>
+      <button id="clearCartBtn" class="ghost" type="button">Clear</button>
+    </div>
+    <p class="hint">Your current order is saved automatically. Refresh the page and it stays.</p>
+  </section>
+
+  <section class="card wide" aria-labelledby="statsTitle">
+    <h2 id="statsTitle">Today's Summary</h2>
+    <div id="stats" class="stats"></div>
+  </section>
+
+  <section class="card wide" aria-labelledby="histTitle">
+    <h2 id="histTitle">Order History</h2>
+    <label class="field inline">Show
+      <select id="filterTable"></select>
+    </label>
+    <p id="histEmpty" class="empty">No orders saved yet.</p>
+    <ul id="history" class="history"></ul>
+  </section>
+
+  <section class="card wide" aria-labelledby="storeTitle">
+    <h2 id="storeTitle">Storage Inspector</h2>
+    <p class="hint">Live view of what this app keeps in <code>localStorage</code>.</p>
+    <div class="scroll">
+      <table id="storageTable">
+        <thead><tr><th>Key</th><th>Stores</th><th>Size (chars)</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="row">
+      <button id="exportBtn" class="ghost" type="button">Export JSON</button>
+      <button id="resetBtn" class="danger" type="button">Reset All Data</button>
+    </div>
+  </section>
+</main>
+
+<p id="toast" class="toast" role="status" aria-live="polite"></p>
+<script src="haziq-12-mamak-order-tracker-web-storage.js"></script>
+</body>
+</html>
