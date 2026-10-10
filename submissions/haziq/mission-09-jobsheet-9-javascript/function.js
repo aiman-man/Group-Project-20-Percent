@@ -2,7 +2,7 @@
 
 function outputCartRow(file, title, quantity, price, total) {
     document.write('<tr>');
-    document.write('<td><img src="images/' + file + '"></td>');
+    document.write('<td><img src="' + file + '" width="100"></td>');
     document.write('<td>' + title + '</td>');
     document.write('<td class="center">' + quantity + '</td>');
     document.write('<td class="right">RM' + price.toFixed(2) + '</td>');
