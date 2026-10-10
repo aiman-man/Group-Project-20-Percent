@@ -1,0 +1,51 @@
+/* lab9.css */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 30px;
+}
+
+main {
+    width: 850px;
+    margin: auto;
+    background: #fff;
+    padding: 15px;
+}
+
+h1 {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff4df;
+}
+
+th {
+    background: #f47700;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+td img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
