@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BasKu – Bus Ticket Booking (sessionStorage)</title>
+<style>
+:root{--bg:#eef6f5;--card:#fff;--text:#16302e;--muted:#5c7774;--line:#d3e3e1;--brand:#0f766e;--brand-d:#0b5a54;--chip:#e6f4f2;--danger:#b91c1c;--taken:#c9d3d2}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.45}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 24px;background:var(--brand);color:#fff}
+.top h1{margin:0;font-size:1.45rem}
+.top p{margin:2px 0 0;font-size:.85rem;opacity:.9}
+.badge{background:rgba(255,255,255,.18);padding:5px 12px;border-radius:999px;font-size:.8rem}
+.layout{max-width:1100px;margin:0 auto;padding:20px;display:grid;grid-template-columns:1.7fr 1fr;gap:18px;align-items:start}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+h2{margin:0 0 12px;font-size:1.15rem}
+.progress{list-style:none;display:flex;gap:6px;margin:0 0 18px;padding:0}
+.progress li{flex:1;text-align:center;font-size:.78rem;color:var(--muted);padding-bottom:8px;border-bottom:4px solid var(--line)}
+.progress li.done{color:var(--brand);border-color:var(--brand)}
+.progress li.active{color:var(--brand-d);font-weight:700;border-color:var(--brand-d)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:flex;flex-direction:column;gap:4px;font-size:.85rem;color:var(--muted)}
+input,select{padding:9px 10px;border:1px solid var(--line);border-radius:8px;font:inherit;color:var(--text);background:#fff}
+input:focus,select:focus{outline:2px solid var(--brand);outline-offset:1px}
+.fare{margin:14px 0 0;padding:10px 12px;background:var(--chip);border-radius:10px}
+.msg{min-height:1.4em;margin:12px 0 0;color:var(--danger);font-weight:600}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:10px}
+button{font:inherit;cursor:pointer}
+.primary,.ghost,.danger{padding:10px 18px;border-radius:10px;border:1px solid transparent;font-weight:600}
+.primary{background:var(--brand);color:#fff}
+.primary:hover{background:var(--brand-d)}
+.ghost{background:#fff;color:var(--text);border-color:var(--line)}
+.danger{background:#fff;color:var(--danger);border-color:var(--danger);width:100%;margin-top:12px}
+.bus{display:inline-block;border:2px solid var(--line);border-radius:18px;padding:14px 16px;background:#fafdfc}
+.bus .front{text-align:center;color:var(--muted);font-size:.8rem;margin-bottom:8px}
+.seatrow{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.seatrow .no{width:20px;font-size:.75rem;color:var(--muted);text-align:right}
+.aisle{width:24px}
+.seat{width:42px;height:38px;border-radius:8px 8px 4px 4px;border:1px solid var(--brand);background:#fff;color:var(--brand-d);font-size:.78rem;font-weight:600}
+.seat:hover:not(:disabled){background:var(--chip)}
+.seat.sel{background:var(--brand);color:#fff}
+.seat:disabled{background:var(--taken);border-color:var(--taken);color:#7d8c8b;cursor:not-allowed}
+.legend{display:flex;gap:14px;font-size:.8rem;color:var(--muted);margin:10px 0}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:4px;border:1px solid var(--brand)}
+.pcard{border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px;background:#fafdfc}
+.pcard h3{margin:0 0 8px;font-size:.95rem}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:var(--chip)}
+.sum th{width:34%}
+.ticket{border:2px dashed var(--brand);border-radius:14px;padding:18px;background:#fff}
+.ticket .ref{font-size:1.6rem;font-weight:800;letter-spacing:2px;color:var(--brand-d)}
+.ticket .route{font-size:1.3rem;font-weight:700;margin:6px 0}
+.hint{color:var(--muted);font-size:.82rem;margin:0 0 10px}
+.scroll{overflow-x:auto}
+code{background:var(--chip);padding:1px 5px;border-radius:5px;font-size:.85em}
+details{margin:10px 0}
+pre{background:#10211f;color:#bff3ea;padding:10px;border-radius:8px;overflow:auto;max-height:220px;font-size:.72rem}
+.tip{background:var(--chip);border-radius:10px;padding:10px 12px;font-size:.82rem;margin-top:8px}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);background:#16302e;color:#fff;padding:10px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:.25s}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media (max-width:820px){.layout{grid-template-columns:1fr;padding:12px}.grid2{grid-template-columns:1fr}}
+@media print{body *{visibility:hidden}#ticketBox,#ticketBox *{visibility:visible}#ticketBox{position:absolute;left:0;top:0;width:100%}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>🚌 BasKu Bus Ticket Booking</h1>
+    <p>Job Sheet 13 · Web Storage – sessionStorage · by Haziq</p>
+  </div>
+  <span class="badge">Sample fares – demo only</span>
+</header>
+
+<main class="layout">
+  <section class="card main">
+    <ol id="progress" class="progress" aria-label="Booking steps"></ol>
+    <div id="stepView"></div>
+    <p id="msg" class="msg" role="alert"></p>
+    <div id="navBar" class="nav"></div>
+  </section>
+
+  <aside class="card side">
+    <h2>Session Inspector</h2>
+    <p id="sessionInfo" class="hint"></p>
+    <div class="scroll">
+      <table id="storageTable">
+        <thead><tr><th>Key</th><th>Stores</th><th>Size</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <details>
+      <summary>View saved JSON</summary>
+      <pre id="rawView"></pre>
+    </details>
+    <div class="tip">
+      <strong>Try it:</strong> fill in a few steps, then refresh – your booking stays.
+      Open this page in a <em>new tab</em> – it starts fresh, because <code>sessionStorage</code> belongs to one tab only.
+      Close the tab and everything is deleted.
+    </div>
+    <button id="clearBtn" class="danger" type="button">Clear this tab's booking</button>
+  </aside>
+</main>
+
+<p id="toast" class="toast" role="status" aria-live="polite"></p>
+<script>
+"use strict";
+
+/* ---------- Config ---------- */
+const PREFIX = "haziq13_bus_";
+const KEYS = { draft: PREFIX + "draft", started: PREFIX + "started" };
+const KEY_INFO = {
+  [KEYS.draft]: "Booking in progress",
+  [KEYS.started]: "When this tab's session began"
+};
+const CITIES = ["Ipoh", "Johor Bahru", "Kota Bharu", "Kuala Lumpur", "Kuantan", "Melaka", "Penang"];
+const DIST = [ // approximate road distance (km), used only to make sample fares
+  ["Kuala Lumpur", "Ipoh", 205], ["Kuala Lumpur", "Penang", 355], ["Kuala Lumpur", "Johor Bahru", 330],
+  ["Kuala Lumpur", "Kuantan", 260], ["Kuala Lumpur", "Kota Bharu", 470], ["Kuala Lumpur", "Melaka", 150],
+  ["Ipoh", "Penang", 160], ["Ipoh", "Johor Bahru", 535], ["Ipoh", "Kuantan", 330],
+  ["Ipoh", "Kota Bharu", 410], ["Ipoh", "Melaka", 350], ["Penang", "Johor Bahru", 690],
+  ["Penang", "Kuantan", 520], ["Penang", "Kota Bharu", 360], ["Penang", "Melaka", 500],
+  ["Johor Bahru", "Kuantan", 380], ["Johor Bahru", "Kota Bharu", 700], ["Johor Bahru", "Melaka", 200],
+  ["Kuantan", "Kota Bharu", 360], ["Kuantan", "Melaka", 370], ["Kota Bharu", "Melaka", 620]
+];
+const KM = {};
+DIST.forEach(([a, b, km]) => { KM[pairKey(a, b)] = km; });
+const TIMES = ["08:00", "10:30", "14:00", "20:30", "23:30"];
+const ROWS = 10, COLS = ["A", "B", "C", "D"];
+const STEPS = ["Trip", "Seats", "Passengers", "Review", "Ticket"];
+const SERVICE_FEE = 100; // sen per ticket
+
+function pairKey(a, b) { return [a, b].sort().join("|"); }
+
+/* ---------- sessionStorage helpers (wrapped in try/catch) ---------- */
+const store = {
+  get(key, fallback) {
+    try {
+      const raw = sessionStorage.getItem(key);
+      return raw === null ? fallback : JSON.parse(raw);
+    } catch (e) { return fallback; }
+  },
+  set(key, value) {
+    try { sessionStorage.setItem(key, JSON.stringify(value)); return true; }
+    catch (e) { toast("Could not save: storage is full or blocked."); return false; }
+  },
+  remove(key) { try { sessionStorage.removeItem(key); } catch (e) { /* ignore */ } },
+  keys() {
+    const out = [];
+    try {
+      for (let i = 0; i < sessionStorage.length; i++) {
+        const k = sessionStorage.key(i);
+        if (k && k.startsWith(PREFIX)) out.push(k);
+      }
+    } catch (e) { /* ignore */ }
+    return out.sort();
+  }
+};
+
+/* ---------- Utilities ---------- */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const money = sen => "RM " + (sen / 100).toFixed(2);
+const pad = n => String(n).padStart(2, "0");
+const isoDate = d => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+function addDays(n) { const d = new Date(); d.setDate(d.getDate() + n); return isoDate(d); }
+let toastTimer;
+function toast(msg) {
+  const t = $("toast");
+  t.textContent = msg; t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove("show"), 2200);
+}
+
+/* ---------- State ---------- */
+function freshState() {
+  return {
+    step: 1,
+    trip: { from: "Kuala Lumpur", to: "Penang", date: addDays(1), time: "08:00", pax: 1 },
+    seats: [], seatSig: "", passengers: [], phone: "", booking: null
+  };
+}
+function loadState() {
+  const d = store.get(KEYS.draft, null), f = freshState();
+  if (!d || typeof d !== "object") return f;
+  try {
+    const t = d.trip || {};
+    const s = {
+      step: Number.isInteger(d.step) && d.step >= 1 && d.step <= 5 ? d.step : 1,
+      trip: {
+        from: CITIES.includes(t.from) ? t.from : f.trip.from,
+        to: CITIES.includes(t.to) ? t.to : f.trip.to,
+        date: /^\d{4}-\d{2}-\d{2}$/.test(t.date) ? t.date : f.trip.date,
+        time: TIMES.includes(t.time) ? t.time : f.trip.time,
+        pax: [1, 2, 3, 4].includes(t.pax) ? t.pax : 1
+      },
+      seats: Array.isArray(d.seats) ? d.seats.filter(x => typeof x === "string") : [],
+      seatSig: typeof d.seatSig === "string" ? d.seatSig : "",
+      passengers: Array.isArray(d.passengers) ? d.passengers.map(String) : [],
+      phone: typeof d.phone === "string" ? d.phone : "",
+      booking: d.booking && typeof d.booking === "object" ? d.booking : null
+    };
+    if (s.step === 5 && !s.booking) s.step = 4;
+    return s;
+  } catch (e) { return f; }
+}
+let state = loadState();
+if (store.get(KEYS.started, null) === null) store.set(KEYS.started, new Date().toISOString());
+function save() { store.set(KEYS.draft, state); renderInspector(); }
+
+/* ---------- Trip helpers ---------- */
+const tripSig = () => [state.trip.from, state.trip.to, state.trip.date, state.trip.time].join("|");
+function fareSen() {
+  const km = KM[pairKey(state.trip.from, state.trip.to)] || 0;
+  return Math.round(Math.round((5 + km * 0.09) * 2) / 2 * 100);
+}
+function hash(str) { let h = 5381; for (const c of str) h = ((h << 5) + h + c.charCodeAt(0)) >>> 0; return h; }
+const isTaken = seat => hash(tripSig() + seat) % 100 < 28;
+const seatOrder = id => parseInt(id, 10) * 10 + COLS.indexOf(id.slice(-1));
+const sortSeats = list => list.slice().sort((a, b) => seatOrder(a) - seatOrder(b));
+const totalSen = () => (fareSen() + SERVICE_FEE) * state.trip.pax;
+const fmtDate = iso => new Date(iso + "T00:00:00").toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric" });
+
+/* ---------- Rendering ---------- */
+function renderProgress() {
+  $("progress").innerHTML = STEPS.map((s, i) => {
+    const n = i + 1, cls = n < state.step ? "done" : n === state.step ? "active" : "";
+    return `<li class="${cls}">${n}. ${s}</li>`;
+  }).join("");
+}
+function opts(list, sel) { return list.map(x => `<option${x === sel ? " selected" : ""}>${esc(x)}</option>`).join(""); }
+function fareLine() {
+  const km = KM[pairKey(state.trip.from, state.trip.to)];
+  return state.trip.from === state.trip.to ? "Choose two different cities."
+    : `Fare: <strong>${money(fareSen())}</strong> per passenger (+ ${money(SERVICE_FEE)} service fee) · about ${km} km`;
+}
+function renderStep() {
+  const t = state.trip, v = $("stepView");
+  if (state.step === 1) {
+    v.innerHTML = `<h2>1. Choose your trip</h2><div class="grid2">
+      <label>From<select data-f="from">${opts(CITIES, t.from)}</select></label>
+      <label>To<select data-f="to">${opts(CITIES, t.to)}</select></label>
+      <label>Date<input type="date" data-f="date" min="${addDays(0)}" value="${esc(t.date)}"></label>
+      <label>Departure<select data-f="time">${opts(TIMES, t.time)}</select></label>
+      <label>Passengers<select data-f="pax">${opts(["1", "2", "3", "4"], String(t.pax))}</select></label></div>
+      <p class="fare" id="fareLine">${fareLine()}</p>`;
+  } else if (state.step === 2) {
+    let rows = "";
+    for (let r = 1; r <= ROWS; r++) {
+      const btn = c => { const id = r + c, sel = state.seats.includes(id);
+        return `<button type="button" class="seat${sel ? " sel" : ""}" data-seat="${id}"${isTaken(id) ? " disabled" : ""}>${id}</button>`; };
+      rows += `<div class="seatrow"><span class="no">${r}</span>${btn("A")}${btn("B")}<span class="aisle"></span>${btn("C")}${btn("D")}</div>`;
+    }
+    v.innerHTML = `<h2>2. Pick your seat${t.pax > 1 ? "s" : ""}</h2>
+      <p class="hint">${esc(t.from)} → ${esc(t.to)} · ${fmtDate(t.date)} · ${t.time}</p>
+      <div class="legend"><span><i style="background:#fff"></i>Free</span><span><i style="background:var(--brand)"></i>Yours</span><span><i style="background:var(--taken);border-color:var(--taken)"></i>Taken</span></div>
+      <div class="bus"><div class="front">🧑‍✈️ Driver</div>${rows}</div>
+      <p class="fare" id="seatCount"></p>`;
+    renderSeatCount();
+  } else if (state.step === 3) {
+    const seats = sortSeats(state.seats);
+    let cards = "";
+    for (let i = 0; i < t.pax; i++) {
+      cards += `<div class="pcard"><h3>Passenger ${i + 1} · Seat ${esc(seats[i] || "?")}</h3>
+        <label>Full name<input type="text" data-name="${i}" maxlength="60" value="${esc(state.passengers[i] || "")}" autocomplete="off"></label></div>`;
+    }
+    v.innerHTML = `<h2>3. Passenger details</h2>${cards}
+      <label>Contact phone (Malaysia)<input type="tel" data-f="phone" placeholder="012-3456789" value="${esc(state.phone)}"></label>
+      <p class="hint">Nothing here is kept after you close this tab.</p>`;
+  } else if (state.step === 4) {
+    const seats = sortSeats(state.seats);
+    v.innerHTML = `<h2>4. Review your booking</h2>
+      <table class="sum">
+      <tr><th>Route</th><td>${esc(t.from)} → ${esc(t.to)}</td></tr>
+      <tr><th>Departure</th><td>${fmtDate(t.date)}, ${t.time}</td></tr>
+      <tr><th>Seats</th><td>${seats.map(esc).join(", ")}</td></tr>
+      <tr><th>Passengers</th><td>${state.passengers.slice(0, t.pax).map((n, i) => `${i + 1}. ${esc(n)} (${esc(seats[i])})`).join("<br>")}</td></tr>
+      <tr><th>Phone</th><td>${esc(state.phone)}</td></tr>
+      <tr><th>Fare</th><td>${t.pax} × ${money(fareSen())} + ${t.pax} × ${money(SERVICE_FEE)} service fee</td></tr>
+      <tr><th>Total</th><td><strong>${money(totalSen())}</strong></td></tr></table>`;
+  } else {
+    const b = state.booking;
+    v.innerHTML = `<h2>5. Your ticket</h2><div class="ticket" id="ticketBox">
+      <small>Booking reference</small><div class="ref">${esc(b.ref)}</div>
+      <div class="route">${esc(b.from)} → ${esc(b.to)}</div>
+      <div>${fmtDate(b.date)}, ${esc(b.time)}</div>
+      <p>Seats: <strong>${b.seats.map(esc).join(", ")}</strong></p>
+      <p>${b.passengers.map((n, i) => `${i + 1}. ${esc(n)} (${esc(b.seats[i])})`).join("<br>")}</p>
+      <p>Phone: ${esc(b.phone)}<br>Total paid: <strong>${money(b.total)}</strong></p>
+      <small>Booked ${new Date(b.bookedAt).toLocaleString()}</small></div>`;
+  }
+  renderNav();
+}
+function renderSeatCount() {
+  const el = $("seatCount");
+  if (el) el.innerHTML = `Selected <strong>${state.seats.length}</strong> of ${state.trip.pax}: ${sortSeats(state.seats).join(", ") || "none yet"}`;
+}
+function renderNav() {
+  const s = state.step;
+  $("navBar").innerHTML = s === 5
+    ? `<button class="ghost" type="button" data-act="print">Print ticket</button><button class="primary" type="button" data-act="new">New booking</button>`
+    : `<button class="ghost" type="button" data-act="back"${s === 1 ? " disabled" : ""}>← Back</button>
+       <button class="primary" type="button" data-act="next">${s === 4 ? "Confirm booking" : "Next →"}</button>`;
+}
+function renderInspector() {
+  const rows = store.keys().map(k => {
+    let size = 0;
+    try { size = k.length + (sessionStorage.getItem(k) || "").length; } catch (e) { /* ignore */ }
+    return `<tr><td><code>${esc(k)}</code></td><td>${esc(KEY_INFO[k] || "Other")}</td><td>${size}</td></tr>`;
+  });
+  $("storageTable").querySelector("tbody").innerHTML = rows.length ? rows.join("") : `<tr><td colspan="3">Nothing stored in this tab yet.</td></tr>`;
+  const started = store.get(KEYS.started, null);
+  $("sessionInfo").textContent = started ? "This tab's session started at " + new Date(started).toLocaleTimeString() + "." : "";
+  let raw = "";
+  try { raw = JSON.stringify(JSON.parse(sessionStorage.getItem(KEYS.draft) || "null"), null, 1) || "(empty)"; } catch (e) { raw = "(unreadable)"; }
+  $("rawView").textContent = raw;
+}
+
+/* ---------- Validation and navigation ---------- */
+function validate(step) {
+  const t = state.trip;
+  if (step === 1) {
+    if (t.from === t.to) return "Departure and destination must be different.";
+    if (!t.date || t.date < addDays(0)) return "Choose today or a later date.";
+  }
+  if (step === 2 && state.seats.length !== t.pax) return `Please select exactly ${t.pax} seat${t.pax > 1 ? "s" : ""}.`;
+  if (step === 3) {
+    for (let i = 0; i < t.pax; i++) {
+      const n = (state.passengers[i] || "").trim();
+      if (n.length < 2) return `Enter the full name for passenger ${i + 1}.`;
+    }
+    const p = state.phone.replace(/[\s-]/g, "");
+    if (!/^(\+?60|0)1\d{8,9}$/.test(p)) return "Enter a valid Malaysian mobile number, e.g. 012-3456789.";
+  }
+  return "";
+}
+function goto(step) { state.step = step; $("msg").textContent = ""; save(); renderProgress(); renderStep(); }
+function next() {
+  const err = validate(state.step);
+  if (err) { $("msg").textContent = err; return; }
+  if (state.step === 1 && state.seatSig !== tripSig()) { state.seats = []; state.seatSig = tripSig(); }
+  if (state.step === 2) {
+    state.seats = sortSeats(state.seats);
+    state.passengers = Array.from({ length: state.trip.pax }, (_, i) => state.passengers[i] || "");
+  }
+  if (state.step === 3) state.passengers = state.passengers.map(n => n.trim()).slice(0, state.trip.pax);
+  if (state.step === 4) { confirmBooking(); return; }
+  goto(state.step + 1);
+}
+function confirmBooking() {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  let ref = "BUS-";
+  for (let i = 0; i < 6; i++) ref += chars[Math.floor(Math.random() * chars.length)];
+  const t = state.trip;
+  state.booking = { ref, from: t.from, to: t.to, date: t.date, time: t.time, seats: sortSeats(state.seats),
+    passengers: state.passengers.slice(0, t.pax), phone: state.phone.trim(), total: totalSen(), bookedAt: new Date().toISOString() };
+  goto(5);
+  toast("Booking confirmed: " + ref);
+}
+function resetBooking() {
+  store.remove(KEYS.draft);
+  state = freshState();
+  $("msg").textContent = "";
+  renderProgress(); renderStep(); renderInspector();
+}
+
+/* ---------- Events ---------- */
+$("stepView").addEventListener("input", e => {
+  const el = e.target;
+  if (el.dataset.name !== undefined) { state.passengers[Number(el.dataset.name)] = el.value; save(); }
+  else if (el.dataset.f === "phone") { state.phone = el.value; save(); }
+});
+$("stepView").addEventListener("change", e => {
+  const f = e.target.dataset.f;
+  if (!f || f === "phone") return;
+  state.trip[f] = f === "pax" ? Number(e.target.value) : e.target.value;
+  if (f === "pax" && state.seats.length > state.trip.pax) state.seats = state.seats.slice(0, state.trip.pax);
+  $("msg").textContent = "";
+  save();
+  $("fareLine").innerHTML = fareLine();
+});
+$("stepView").addEventListener("click", e => {
+  const b = e.target.closest("button[data-seat]");
+  if (!b || b.disabled) return;
+  const id = b.dataset.seat, i = state.seats.indexOf(id);
+  if (i >= 0) state.seats.splice(i, 1);
+  else if (state.seats.length >= state.trip.pax) { toast(`You can only choose ${state.trip.pax} seat${state.trip.pax > 1 ? "s" : ""}.`); return; }
+  else state.seats.push(id);
+  state.seatSig = tripSig();
+  b.classList.toggle("sel");
+  $("msg").textContent = "";
+  save(); renderSeatCount();
+});
+$("navBar").addEventListener("click", e => {
+  const b = e.target.closest("button[data-act]");
+  if (!b) return;
+  const a = b.dataset.act;
+  if (a === "next") next();
+  else if (a === "back" && state.step > 1) goto(state.step - 1);
+  else if (a === "print") window.print();
+  else if (a === "new") resetBooking();
+});
+$("clearBtn").addEventListener("click", () => {
+  if (!confirm("Clear this tab's booking and start again?")) return;
+  resetBooking();
+  toast("Session booking cleared.");
+});
+
+/* ---------- Start ---------- */
+renderProgress();
+renderStep();
+renderInspector();
+</script>
+</body>
+</html>
